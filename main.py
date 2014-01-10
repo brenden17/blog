@@ -24,6 +24,12 @@ def post(post_id=None):
     content = Markup(markdown.markdown(post.content))
     return render_template('post.html', post=post, content=content)
 
+@app.route('/blogs/')
+def posts():
+    post = Post.get_by_id(post_id)
+    content = Markup(markdown.markdown(post.content))
+    return render_template('post.html', post=post, content=content)
+
 @admin_required
 @app.route('/create-post', methods=['POST', 'GET'])
 def create_post():
@@ -39,7 +45,7 @@ def create_post():
         post = Post(category=category,
                     title=title, content=content, tags=tags)
         post.put()
-        return redirect(url_for('/blog/', post_id=post.key.id()))
+        return redirect(url_for('/blog/', post_id=post))
 
     return render_template('create_post.html')
 
