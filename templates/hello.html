@@ -1,4 +1,12 @@
 {% extends "base.html" %}
 {% block content %}
-<h1>Hi, Brenden!</h1>
+    <ul>
+        {% for post in posts %}
+        <li>
+            {{ post.title }} (written by {{ post.author.nickname() }})
+    
+            {{ post.content }}
+        </li>
+        {% endfor %}
+    </ul>
 {% endblock %}

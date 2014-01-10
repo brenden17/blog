@@ -1,8 +1,11 @@
 ## Blog on Google App Engine
 
+https://github.com/brenden17/blog
+http://cohesive-beach-456.appspot.com/
 https://appengine.google.com/
 ~~~
 git push appengine master
+
 ~~~
 
 ### Flask

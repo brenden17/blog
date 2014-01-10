@@ -4,3 +4,5 @@
 # include README so user doesn't have to create this dir
 #!server/lib/README.txt
 .DS_Store
+.project
+.pydevproject
