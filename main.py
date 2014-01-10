@@ -28,16 +28,18 @@ def post(post_id=None):
 @app.route('/create-post', methods=['POST', 'GET'])
 def create_post():
     if request.method == 'POST':
+        category = request.form['category'] or 'b'
         title = request.form['title'] or 'No title'
-        contents = request.form['contents'] or 'No Contents'
+        content = request.form['content'] or 'No Content'
         tags = request.form['tags']
         if tags:
             tags = map(lambda x: x.strip(), tags.split(','))
         else:
             tags = ['']
-        post = Post(title=title, contents=contents, tags=tags)
+        post = Post(category=category,
+                    title=title, contents=content, tags=tags)
         post.put()
-        return redirect(url_for('post'))
+        return redirect(url_for('/blog/%d' % post.id))
 
     return render_template('create_post.html')
 
