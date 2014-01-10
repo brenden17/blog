@@ -5,6 +5,7 @@ import sys
 from flask import Flask
 from flask import render_template
 
+import markdown
 from models import Post
 
 app = Flask(__name__.split('.')[0])
