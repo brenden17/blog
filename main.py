@@ -20,3 +20,11 @@ def index():
 @app.route('/blog')
 def post():
     return render_template('post.html')
+
+@app.route('/create-blog')
+def create_post():
+    return render_template('create_post.html')
+
+@app.route('/admin')
+def post():
+    return render_template('post.html')

@@ -40,18 +40,11 @@
          <nav id="nav-wrap" class="cf">
 
             <ul id="menu">
-		    <li {% block icurrent %}{% endblock%}><a href="/index">Home</a></li>
-	            <li><a href="/blog">Blog</a></li>
+		        <li {% block icurrent %}{% endblock %}><a href="/index">Home</a></li>
+	            <li {% block pcurrent %}{% endblock %}><a href="/blog">Blog</a></li>
 	            <li><a href="style-demo.htm">Style Demo</a></li>
 	            <li><a href="archives.htm">Archives</a></li>
-	            <li><a href="#">Dropdown</a>
-                  <ul>
-                     <li><a href="#"><span>- </span>Submenu 01</a></li>
-                     <li><a href="#"><span>- </span>Submenu 02</a></li>
-                     <li><a href="#"><span>- </span>Submenu 03</a></li>
-                  </ul>
-               </li>
-	            <li><a href="#">About</a></li>
+	            <li {% block pcurrent %}{% endblock %}><a href="/about">About</a></li>
             </ul> <!-- end #menu -->
 
          </nav>
