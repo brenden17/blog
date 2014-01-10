@@ -17,9 +17,6 @@ def index():
     """ Return hello template at application root URL."""
     return render_template('index.html')
 
-
-
-@app.route('/posts')
-def list_posts():
-    posts = Post.all()
-    return render_template('list_posts.html', posts=posts)
+@app.route('/post')
+def post():
+    return render_template('post.html')
