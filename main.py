@@ -4,7 +4,7 @@ import sys
 # sys.path includes 'server/lib' due to appengine_config.py
 from flask import Flask
 from flask import render_template
-from flask import redirect, url_for
+from flask import redirect, url_for, request
 
 import markdown
 from models import Post
@@ -22,7 +22,7 @@ def index():
 def post():
     return render_template('post.html')
 
-@app.route('/create-blog', methods=['POST', 'GET'])
+@app.route('/create-post', methods=['POST', 'GET'])
 def create_post():
     if request.method == 'POST':
         title = request.form['title']
