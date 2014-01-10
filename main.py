@@ -28,7 +28,7 @@ def create_post():
         title = request.form['title']
         contents = request.form['contents']
         tags = request.form['tags']
-        return return redirect(url_for('post'))
+        return redirect(url_for('post'))
 
     return render_template('create_post.html')
 
