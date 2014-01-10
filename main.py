@@ -34,7 +34,7 @@ def create_post():
         if tags:
             tags = map(lambda x: x.strip(), tags.split(','))
         else:
-            tags = []
+            tags = ''
         post = Post(title=title, contents=contents, tags=tags)
         post.put()
         return redirect(url_for('post'))

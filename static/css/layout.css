@@ -65,7 +65,7 @@ footer {
 #latest-article h2, #latest-article h2 a,
 #title-section h2, #title-section h2 a {
    font-family: Domine, Serif;
-   font-size: 60px;
+   font-size: 30px;
    line-height: 72px;
    font-weight: bold;
    color: #1e83b6;
@@ -103,7 +103,9 @@ footer {
    width: 46px;
    height: 48px;
    margin-top: 18px;
+   /*
    background: url(../images/bubble.png) no-repeat;
+   */
    text-align: center;
 }
 .comments a {
