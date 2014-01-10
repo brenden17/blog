@@ -19,7 +19,7 @@ def index():
     return render_template('index.html')
 
 @app.route('/blog/<int:post_id>')
-def post(post_id=None):
+def post(post_id):
     post = Post.get_by_id(post_id)
     content = Markup(markdown.markdown(post.content))
     return render_template('post.html', post=post, content=content)
@@ -45,7 +45,7 @@ def create_post():
         post = Post(category=category,
                     title=title, content=content, tags=tags)
         post.put()
-        return redirect(url_for('/blog/', post_id=post))
+        return redirect(url_for('/blog/', post_id=post.key.id()))
 
     return render_template('create_post.html')
 
