@@ -9,20 +9,22 @@
 
             <article>
                <h2 class="huge">{{ post.title }}</h2>
-               <p class="post-info">by <span><a href="#">chulwuk</a></span> &nbsp;
-                  filed in <span>
-                  {% for tag in post.tags %}
-                  <a href="#">{{ tag }}</a>
-                  {% endfor %}
-                  </span>
+               <p class="post-info">by <span><a href="#">chulwuk</a></span>
+                   &nbsp; filed in <span>
+                   {% for tag in post.tags %}
+                   <a href="#">{{ tag }}</a>
+                   {% endfor %}
+                   </span>
                </p>
                <p class="lead">
                {{ content }}
                </p>
                <p class="tags">
 			         <span>Tagged in </span>:
-				      <a href="#">orci</a>, <a href="#">lectus</a>, <a href="#">varius</a>, <a href="#">turpis</a>
-			      </p>
+			         {% for tag in post.tags %}
+                        <a href="#">{{ tag }}</a>
+                     {% endfor %}
+               </p>
 
                <p class="postmeta">
 				      <span><a href="#">Comments (3)</a></span>

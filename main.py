@@ -8,7 +8,9 @@ from flask import redirect, url_for, request
 from flask import Markup
 
 import markdown
+
 from models import Post
+from decorators import login_required, admin_required
 
 app = Flask(__name__.split('.')[0])
 
@@ -22,6 +24,7 @@ def post(post_id=None):
     content = Markup(markdown.markdown(post.content))
     return render_template('post.html', post=post, content=content)
 
+@admin_required
 @app.route('/create-post', methods=['POST', 'GET'])
 def create_post():
     if request.method == 'POST':
