@@ -17,6 +17,6 @@ def index():
     """ Return hello template at application root URL."""
     return render_template('index.html')
 
-@app.route('/post')
+@app.route('/blog')
 def post():
     return render_template('post.html')
