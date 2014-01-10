@@ -12,11 +12,8 @@ from models import Post
 
 app = Flask(__name__.split('.')[0])
 
-
 @app.route('/')
-@app.route('/index')
 def index():
-    """ Return hello template at application root URL."""
     return render_template('index.html')
 
 @app.route('/blog/<int:post_id>')
@@ -40,7 +37,6 @@ def create_post():
                     title=title, content=content, tags=tags)
         post.put()
         return redirect(url_for('/blog/', post_id=post.id))
-#         return redirect(url_for('/blog/%d' % post.id))
 
     return render_template('create_post.html')
 
