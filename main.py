@@ -37,8 +37,9 @@ def create_post():
         else:
             tags = ['']
         post = Post(category=category,
-                    title=title, contents=content, tags=tags)
+                    title=title, content=content, tags=tags)
         post.put()
+#         return redirect(url_for('/blog/', post_id=post.id))
         return redirect(url_for('/blog/%d' % post.id))
 
     return render_template('create_post.html')
