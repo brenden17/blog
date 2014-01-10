@@ -15,7 +15,7 @@ app = Flask(__name__.split('.')[0])
 @app.route('/index')
 def index():
     """ Return hello template at application root URL."""
-    return render_template('index.html')
+    return render_template('hello.html')
 
 @app.route('/blog')
 def post():
