@@ -1,6 +1,25 @@
 {% extends "base.html" %}
 {% block content %}
       <div id="content" class="container">
-      admin
+        <form action="/" method="post">
+            <ul>
+            <li>
+                <label for="title">Title</label>
+                <input type="text" name="title" />
+            </li>
+            <li>
+                <label for="contents">Contents</label>
+                <textarea name="contents" cols="25" rows="3"></textarea>
+            </li>
+            <li>
+                <label for="tags">Tags</label>
+                <input type="text" name="tags"/>
+            </li>
+            <li>
+                <input type="submit" value="submit" />
+                <input type="reset" value="reset" />
+            </li>
+            </ul>
+        </form>
       </div>
 {% endblock %}
