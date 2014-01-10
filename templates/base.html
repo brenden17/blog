@@ -1,11 +1,207 @@
-<html>
-    <head>
-        <title>Blog</title>
-    </head>
-    <body>
-    <div>Home: <a href="/index">Home</a></div>
-    <div>Home: <a href="/posts">Posts</a></div>
-    <hr>
-    {% block content %}{% endblock %}
-    </body>
+<!DOCTYPE html>
+<!--[if lt IE 8 ]><html class="ie ie7" lang="en"> <![endif]-->
+<!--[if IE 8 ]><html class="ie ie8" lang="en"> <![endif]-->
+<!--[if (gte IE 8)|!(IE)]><!--><html lang="en"> <!--<![endif]-->
+<head>
+
+   <!--- Basic Page Needs
+   ================================================== -->
+	<meta charset="utf-8">
+	<title>free lunch</title>
+	<meta name="description" content="">
+	<meta name="author" content="">
+
+	<!-- CSS
+   ================================================== -->
+	<link rel="stylesheet" href="/static/css/base.css">
+	<link rel="stylesheet" href="/static/css/layout.css">
+
+	<!--[if lt IE 9]>
+		<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+
+</head>
+
+<body>
+
+   <div id="content-wrap">
+
+      <!-- Header
+      ================================================== -->
+      <header class="container">
+
+         <hgroup>
+            <h1><a href="/index">free lunch</a></h1>
+            <h3>공짜 점심 만들기</h3>
+         </hgroup>
+
+
+         <nav id="nav-wrap" class="cf">
+
+            <ul id="menu">
+	            <li class="current"><a href="/index">Home</a></li>
+	            <li><a href="/post">Blog</a></li>
+	            <li><a href="style-demo.htm">Style Demo</a></li>
+	            <li><a href="archives.htm">Archives</a></li>
+	            <li><a href="#">Dropdown</a>
+                  <ul>
+                     <li><a href="#"><span>- </span>Submenu 01</a></li>
+                     <li><a href="#"><span>- </span>Submenu 02</a></li>
+                     <li><a href="#"><span>- </span>Submenu 03</a></li>
+                  </ul>
+               </li>
+	            <li><a href="#">About</a></li>
+            </ul> <!-- end #menu -->
+
+         </nav>
+
+      </header>
+      {% block content %}{% endblock %}
+      <!-- search section
+      ================================================== -->
+      <div id="search-section" class="container">
+         <form class="cf">
+
+            <div class="grid4 a-left first">
+               <label for="regularInput">Search the site</label>
+            </div>
+
+            <div class="grid8 a-right">
+               <input type="text" id="regularInput">
+               <button type="submit">GO</button>
+            </div>
+
+         </form>
+      </div>
+
+   </div> <!-- end content-wrap -->
+
+   <!-- footer
+   ================================================== -->
+   <footer class="container">
+
+      <div class="grid3 first">
+
+         <div class="footer-logo">
+            <a href="#"><img src="images/footer-logo.png"></a>
+         </div>
+
+         <p>Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor,
+         nisi elit consequat ipsum, nec sagittis sem nibh id elit. Duis sed odio sit amet nibh vulputate cursus a sit amet mauris.
+         Morbi accumsan ipsum velit. Nam nec tellus a odio tincidunt auctor a ornare odio. <a href="#">Learn More</a> </p>
+
+         <h3>social</h3>
+
+            <ul class="social-links cf">
+				   <li class="twitter"><a href="#">Twitter</a></li>
+				   <li class="facebook"><a href="#">Facebook</a></li>
+				   <li class="google"><a href="#">Google</a></li>
+				   <li class="instagram"><a href="#">Instagram</a></li>
+				   <li class="dribble"><a href="#">Dribble</a></li>
+			   </ul>
+
+      </div>
+
+      <div class="grid3">
+
+         <h3>Latest Tweets</h3>
+
+            <ul id="twitter">
+               <li>
+                  <span>
+                  This is Photoshop's version  of Lorem Ipsum. Proin gravida nibh vel velit auctor aliquet.
+                  Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum
+                  <a href="#">http://t.co/CGIrdxIlI3</a>
+                  </span>
+                  <b><a href="#">2 Days Ago</a></b>
+               </li>
+               <li>
+                  <span>
+                  This is Photoshop's version  of Lorem Ipsum. Proin gravida nibh vel velit auctor aliquet.
+                  Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum
+                  <a href="#">http://t.co/CGIrdxIlI3</a>
+                  </span>
+                  <b><a href="#">3 Days Ago</a></b>
+               </li>
+            </ul>
+
+      </div>
+
+      <div class="grid3">
+
+         <h3>Explore our site</h3>
+
+            <ul class="link-list">
+               <li><a href="#">Home</a></li>
+               <li><a href="#">Style Demo</a></li>
+               <li><a href="#">Blog</a></li>
+               <li><a href="#">Archives</a></li>
+               <li><a href="#">Support</a></li>
+               <li><a href="#">About</a></li>
+            </ul>
+
+         <h3>Resources</h3>
+
+            <ul class="link-list">
+               <li><a title="Site Templates" href="http://themeforest.net?ref=ealigam">ThemeForest</a></li>
+					<li><a title="Website Templates" href="http://www.4templates.com/?go=228858961">4Templates</a></li>
+					<li><a title="Web Templates" href="http://store.templatemonster.com?aff=ealigam">TemplateMonster</a></li>
+					<li><a title="Stock Graphics" href="http://graphicriver.net?ref=ealigam">GraphicRiver</a></li>
+					<li><a title="Web Hosting" href="http://www.dreamhost.com/r.cgi?287326">Dreamhost</a></li>
+               <li><a title="Create Your Own Website" href="http://www.wix.com/html5/websites_400?utm_campaign=af_styleshout.com&experiment_id=af_styleshout.com_html1">Create Your Own Website</a></li>
+            </ul>
+
+      </div>
+
+      <div class="grid3">
+
+         <h3>Photostream</h3>
+
+            <ul class="photostream">
+               <li><a href="#"><img width="60" height="60" alt="thumbnail" src="images/thumb.jpg"></a></li>
+               <li><a href="#"><img width="60" height="60" alt="thumbnail" src="images/thumb.jpg"></a></li>
+               <li><a href="#"><img width="60" height="60" alt="thumbnail" src="images/thumb.jpg"></a></li>
+               <li><a href="#"><img width="60" height="60" alt="thumbnail" src="images/thumb.jpg"></a></li>
+               <li><a href="#"><img width="60" height="60" alt="thumbnail" src="images/thumb.jpg"></a></li>
+               <li><a href="#"><img width="60" height="60" alt="thumbnail" src="images/thumb.jpg"></a></li>
+            </ul>
+
+         <h3>Contact Info</h3>
+
+		   <p>
+		   <strong>Phone: </strong>+1234567<br>
+		   <strong>Fax: </strong>+123456789<br>
+		   <strong>Address: </strong>123 Put Your Address Here<br>
+         <strong>E-mail: </strong>me@freshpick.com
+         </p>
+
+         <p>Want more info - go to our <a href="#">contact page</a></p>
+
+	   </div>
+
+      <!-- footer-bottom
+      ================================================== -->
+      <div id="footer-bottom" class="grid12 first">
+
+	      <p>
+         2013 Copyright Info &nbsp; &nbsp; &nbsp;
+		   Design by <a href="http://www.styleshout.com/">styleshout</a>
+         </p>
+
+         <!-- Back To Top Button -->
+         <div id="go-top"><a href="#" title="Back to Top">Go To Top</a></div>
+
+      </div>
+
+   </footer>
+
+   <!-- Java Script
+   ================================================== -->
+   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+   <script>window.jQuery || document.write('<script src="js/jquery-1.10.2.min.js"><\/script>')</script>
+
+   <script src="js/custom.js"></script>
+
+</body>
+
 </html>
