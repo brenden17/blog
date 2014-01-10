@@ -4,12 +4,16 @@
         <form action="/create-post" method="post">
             <ul>
             <li>
+                <label for="type">Category:a or b</label>
+                <input type="text" name="category" />
+            </li>
+            <li>
                 <label for="title">Title</label>
                 <input type="text" name="title" />
             </li>
             <li>
                 <label for="contents">Contents</label>
-                <textarea name="contents" cols="25" rows="3"></textarea>
+                <textarea name="contents" cols="400" rows="150"></textarea>
             </li>
             <li>
                 <label for="tags">Tags</label>

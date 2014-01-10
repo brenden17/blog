@@ -1,0 +1,6 @@
+indexes:
+
+- kind: Post
+  properties:
+  - name: date
+    direction: desc

@@ -20,7 +20,7 @@ def index():
     return render_template('index.html')
 
 @app.route('/blog/<int:post_id>')
-def post(post_id):
+def post(post_id=None):
     post = Post.get_by_id(post_id)
     contents = Markup(markdown.markdown(post.contents))
     return render_template('post.html', post=post, contents=contents)
@@ -34,7 +34,7 @@ def create_post():
         if tags:
             tags = map(lambda x: x.strip(), tags.split(','))
         else:
-            tags = ''
+            tags = ['']
         post = Post(title=title, contents=contents, tags=tags)
         post.put()
         return redirect(url_for('post'))
