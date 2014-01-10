@@ -6,8 +6,8 @@
 # TODO: Enter your application id below. If you have signed up
 # using cloud.google.com/console use the "project id" for your application
 # id.
-application: your-app-or-project-id-here
-version: 1
+application:  cohesive-beach-456 
+version: 2
 runtime: python27
 api_version: 1
 threadsafe: yes
