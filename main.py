@@ -10,7 +10,7 @@ from flask import Markup
 import markdown
 
 from models import Post
-from decorators import login_required, admin_required
+from decorator import login_required, admin_required
 
 app = Flask(__name__.split('.')[0])
 
