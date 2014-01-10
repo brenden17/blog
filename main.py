@@ -5,6 +5,7 @@ import sys
 from flask import Flask
 from flask import render_template
 from flask import redirect, url_for, request
+from flask import Markup
 
 import markdown
 from models import Post
@@ -21,7 +22,8 @@ def index():
 @app.route('/blog/<int:post_id>')
 def post(post_id):
     post = Post.get_by_id(post_id)
-    return render_template('post.html', post=post)
+    contents = Markup(markdown.markdown(post.contents))
+    return render_template('post.html', post=post, contents=contents)
 
 @app.route('/create-post', methods=['POST', 'GET'])
 def create_post():
