@@ -25,9 +25,13 @@ def post():
 @app.route('/create-post', methods=['POST', 'GET'])
 def create_post():
     if request.method == 'POST':
-        title = request.form['title']
-        contents = request.form['contents']
+        title = request.form['title'] or 'No title'
+        contents = request.form['contents'] or 'No Contents'
         tags = request.form['tags']
+        if tags:
+            tags = map(lambda x: x.strip(), tags.split(','))
+        post = Post(title=title, contents=contents, tags=tags)
+        post.put()
         return redirect(url_for('post'))
 
     return render_template('create_post.html')
