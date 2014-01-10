@@ -6,7 +6,7 @@ from flask import Flask
 from flask import render_template
 
 from models import Post
-k
+
 app = Flask(__name__.split('.')[0])
 
 
