@@ -1,7 +1,4 @@
-<!DOCTYPE html>
-<!--[if lt IE 8 ]><html class="ie ie7" lang="en"> <![endif]-->
-<!--[if IE 8 ]><html class="ie ie8" lang="en"> <![endif]-->
-<!--[if (gte IE 8)|!(IE)]><!--><html lang="en"> <!--<![endif]-->
+gte IE 8)|!(IE)]><!--><html lang="en"> <!--<![endif]-->
 <head>
 
    <!--- Basic Page Needs
@@ -39,7 +36,7 @@
          <nav id="nav-wrap" class="cf">
 
             <ul id="menu">
-	            <li class="current"><a href="/index">Home</a></li>
+		    <li {% block icurrent %}{% endblock%}><a href="/index">Home</a></li>
 	            <li><a href="/post">Blog</a></li>
 	            <li><a href="style-demo.htm">Style Demo</a></li>
 	            <li><a href="archives.htm">Archives</a></li>
