@@ -39,8 +39,8 @@ def create_post():
         post = Post(category=category,
                     title=title, content=content, tags=tags)
         post.put()
-#         return redirect(url_for('/blog/', post_id=post.id))
-        return redirect(url_for('/blog/%d' % post.id))
+        return redirect(url_for('/blog/', post_id=post.id))
+#         return redirect(url_for('/blog/%d' % post.id))
 
     return render_template('create_post.html')
 
