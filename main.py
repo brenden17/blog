@@ -33,6 +33,8 @@ def create_post():
         tags = request.form['tags']
         if tags:
             tags = map(lambda x: x.strip(), tags.split(','))
+        else:
+            tags = []
         post = Post(title=title, contents=contents, tags=tags)
         post.put()
         return redirect(url_for('post'))
