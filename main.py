@@ -18,9 +18,10 @@ def index():
     """ Return hello template at application root URL."""
     return render_template('index.html')
 
-@app.route('/blog')
-def post():
-    return render_template('post.html')
+@app.route('/blog/<int:post_id>')
+def post(post_id):
+    post = Post.get_by_id(post_id)
+    return render_template('post.html', post=post)
 
 @app.route('/create-post', methods=['POST', 'GET'])
 def create_post():
