@@ -22,8 +22,8 @@ def index():
 @app.route('/blog/<int:post_id>')
 def post(post_id=None):
     post = Post.get_by_id(post_id)
-    contents = Markup(markdown.markdown(post.contents))
-    return render_template('post.html', post=post, contents=contents)
+    content = Markup(markdown.markdown(post.content))
+    return render_template('post.html', post=post, content=content)
 
 @app.route('/create-post', methods=['POST', 'GET'])
 def create_post():
