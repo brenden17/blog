@@ -1,7 +1,7 @@
 import os
 import sys
 
-from blog.models import Post
+from models import Post
 
 # sys.path includes 'server/lib' due to appengine_config.py
 from flask import Flask
