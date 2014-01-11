@@ -276,7 +276,7 @@ hr { border: solid #ddd; border-width: 1px 0 0; clear: both; margin: 11px 0 30px
 a, a:visited {
 text-decoration: none;
 outline: 0;
-color:#7AA300;
+color:#d3d3d3;
 
 -webkit-transition:color .3s ease-in-out;
 -moz-transition:color .3s ease-in-out;
