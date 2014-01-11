@@ -23,3 +23,5 @@ class Post(ndb.Model):
     def get_tagged_post(self, tag):
         return Post.query().filter(Post.tag in tag)
 
+    def get_tags(self):
+        return ''.join(['<a href="/posts/%s">%s</a>' % (tag, tag) for tag in self.tags])

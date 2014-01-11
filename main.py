@@ -34,11 +34,11 @@ def post(post_id):
                            next=next,
                            content=content)
 
-@app.route('/blogs/')
-def posts():
+@app.route('/posts/<int:post_id>')
+def tags():
     post = Post.get_by_id(post_id)
-    content = Markup(markdown.markdown(post.content))
-    return render_template('post.html', post=post, content=content)
+    posts = post.get_tagged_post()
+    return render_template('posts.html', posts=posts)
 
 @admin_required
 @app.route('/create-post', methods=['POST', 'GET'])

@@ -21,9 +21,7 @@
                </p>
                <p class="tags">
 			         <span>Tagged in </span>:
-			         {% for tag in post.tags %}
-                        <a href="#">{{ tag }}</a>
-                     {% endfor %}
+			         {{ post.get_tags() }} 
                </p>
 
                <p class="postmeta">
