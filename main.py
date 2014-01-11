@@ -18,7 +18,7 @@ app = Flask(__name__.split('.')[0])
 def index():
     posts = Post.get_lastest(5)
     current_post = posts[0]
-    rest_posts = rest_posts[1:]
+    rest_posts = posts[1:]
     return render_template('index.html',
                            current_post=current_post,
                            rest_posts=rest_posts)
