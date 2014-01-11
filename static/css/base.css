@@ -149,7 +149,7 @@ body {
 --------------------------------------------------------------------- */
 
 h1, h2, h3, h4, h5, h6 {
-    color: #d3d3d3;
+    color: #c0c0c0;
 	font-family: Sans-Serif;
 	font-weight: bold; }
 h1 a, h2 a, h3 a, h4 a, h5 a, h6 a { font-weight: inherit; }
@@ -276,7 +276,7 @@ hr { border: solid #ddd; border-width: 1px 0 0; clear: both; margin: 11px 0 30px
 a, a:visited {
 text-decoration: none;
 outline: 0;
-color:#a9a9a9;
+color:#d3d3d3;
 
 -webkit-transition:color .3s ease-in-out;
 -moz-transition:color .3s ease-in-out;
@@ -284,7 +284,7 @@ color:#a9a9a9;
 transition:color .3s ease-in-out;
 }
 
-a:hover, a:focus { color:#a9a9a9; }
+a:hover, a:focus { color:#dcdcdc; }
 p a, p a:visited { line-height: inherit; }
 
 

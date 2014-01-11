@@ -34,10 +34,9 @@ def post(post_id):
                            next=next,
                            content=content)
 
-@app.route('/posts/<int:post_id>')
-def tags():
-    post = Post.get_by_id(post_id)
-    posts = post.get_tagged_post()
+@app.route('/posts/<tag>')
+def tags(tag):
+    posts = post.get_tagged_post(tag)
     return render_template('posts.html', posts=posts)
 
 @admin_required
