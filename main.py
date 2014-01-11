@@ -17,7 +17,11 @@ app = Flask(__name__.split('.')[0])
 @app.route('/')
 def index():
     posts = Post.get_lastest(5)
-    return render_template('index.html', posts=posts)
+    current_post = posts[0]
+    rest_posts = rest_posts[1:]
+    return render_template('index.html',
+                           current_post=current_post,
+                           rest_posts=rest_posts)
 
 @app.route('/blog/<int:post_id>')
 def post(post_id):

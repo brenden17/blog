@@ -2,7 +2,7 @@
 {% block icurrent %}class="current"{% endblock %}
 {% block content %}
       {% for post in posts %}
-      {{ post.key.id }}
+      {{ post.key.id() }}
       {{ post.title }}
       {{ post.date.month }}
       {% endfor %}
@@ -10,33 +10,27 @@
       ================================================== -->
       <article id="latest-article" class="container">
 
-         <h2><a href="#">닌자고 보면서 살기 .</a></h2>
-         <p class="post-info">by <span><a href="#">Erwin Aligam</a></span> &nbsp;
-         filed in <span><a href="#">typography</a>, <a href="#">designs</a>, <a href="#">projects</a></span>
+         <h2><a href="{{ current_post.get_addr() }}">{{ current_post.title }}</a></h2>
+         <p class="post-info">by <span><a href="#">chulwuk</a></span> &nbsp;
+         filed in <span>
+         {% for tag in current_post.tags %}
+         <a href="#">{{ tag }}</a>
+         {% endfor %}
+         </span>
+         </p>
+         <div class="dcontent cf">
+    	 <p>
+    	 {{ current_post.content }}
          </p>
 
-         <div class="dcontent cf">
-	 <p>
-	 [스포츠서울닷컴ㅣ박상혁 기자] 2014 소치동계올림픽 개막을 불과 한 달도 남겨두지 않은 시점에 쇼트트랙계에 논란이 일고 있다.
-
-	 10일 YTN에 따르면 대한빙상경기연맹(이하 빙상연맹)이 성추행 의혹 코치를 대표팀 코치로 발탁한 사실이 뒤늦게 밝혀졌다.
-
-	 문제의 코치는 지난해 4월 쇼트트랙 국가대표팀 코치에 선발된 A씨다. A씨는 지난 2012년 여름 자신이 지도하던 실업팀의 한 여제자를 성추행하려 한 사실이 알려지며 논란에 휩싸였다.
-		 
-		 ullam dictum felis eu pede mollis pretium. Cras dapibus. Vivamus elementum se semper nisi.
-            Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae seasne eleifend ac,
-            enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, telus. Phasellus viverra nulla
-            ut metus varius laoreet. Quisque rutrum. Aenean imperdiet. Eu turpis risus nascetur magna odio
-            magna odio, nisi, in est aenean porttitor, urna egestas.</p>
-
-            <p class="continue cf"><a class="button" href="#">Continue Reading</a></p>
+            <p class="continue cf"><a class="button" href="{{ current_post.get_addr() }}">Continue Reading</a></p>
 
             <div class="post-meta">
 
                <p class="dateinfo">
-                  14
-                  <span class="dmonth">Mar</span>
-                  <span class="dyear">2013</span>
+                  {{ current_post.date.day }}
+                  <span class="dmonth">{{ current_post.date.month }}</span>
+                  <span class="dyear">{{ current_post.date.year }}</span>
                </p>
 
                <div class="comments">
@@ -52,22 +46,17 @@
       <!-- more articles
       ================================================== -->
       <div id="more-articles" class="container">
-
+        {{ for post in rest_posts }}
          <article class="cf">
 
             <div class="grid4 a-left first">
-               <h3><a href="#">White Space and Simplicity</a></h3>
-               <p>March 12, 2013</p>
+               <h3><a href="{{ post.get_addr() }}">{{ post.title }}</a></h3>
+               <p>{{ post.date.strftime('%Y-%m-%d') }}</p>
             </div>
 
             <div class="grid8 a-right">
 
-               <p>Enim urna! Et turpis ac mus arcu, placerat in proinodio, nisi, in est
-               Hac, augue ultrices phasellus elit, sociis aenean aenean Eu turpis
-               scelerisque sed eu pid, elementum aliquet, nec cras urpis magnis
-               Sagittis diam aenean? Eu turpis magnis risus nascetur magna odio
-               magna odio, nisi, in est aenean porttitor, urna egestas er odio arcu
-               Lundium facilisis odio arcu mus ultricies ac penatibus risus nascetur. <a href="#">Read More...</a> </p>
+               <p>{{ post.content }} <a href="{{ post.get_addr() }}">Read More...</a> </p>
 
                <div class="comments">
                   <a href="#" title="comment on...">11</a>
@@ -76,79 +65,7 @@
             </div>
 
          </article>
-
-         <article class="cf">
-
-            <div class="grid4 a-left first">
-               <h3><a href="#">Better Typography Better Design</a></h3>
-               <p>March 12, 2013</p>
-            </div>
-
-            <div class="grid8 a-right">
-
-               <p>Enim urna! Et turpis ac mus arcu, placerat in proinodio, nisi, in est
-               Hac, augue ultrices phasellus elit, sociis aenean aenean Eu turpis
-               scelerisque sed eu pid, elementum aliquet, nec cras urpis magnis
-               Sagittis diam aenean? Eu turpis magnis risus nascetur magna odio
-               magna odio, nisi, in est aenean porttitor, urna egestas er odio arcu
-               Lundium facilisis odio arcu mus ultricies ac penatibus risus nascetur. <a href="#">Read More...</a> </p>
-
-               <div class="comments">
-                  <a href="#" title="comment on...">5</a>
-               </div>
-
-            </div>
-
-         </article>
-
-         <article class="cf">
-
-            <div class="grid4 a-left first">
-               <h3><a href="#">I Love Minimalist Designs</a></h3>
-               <p>March 12, 2013</p>
-            </div>
-
-            <div class="grid8 a-right">
-
-               <p>Enim urna! Et turpis ac mus arcu, placerat in proinodio, nisi, in est
-               Hac, augue ultrices phasellus elit, sociis aenean aenean Eu turpis
-               scelerisque sed eu pid, elementum aliquet, nec cras urpis magnis
-               Sagittis diam aenean? Eu turpis magnis risus nascetur magna odio
-               magna odio, nisi, in est aenean porttitor, urna egestas er odio arcu
-                Lundium facilisis odio arcu mus ultricies ac penatibus risus nascetur. <a href="#">Read More...</a> </p>
-
-               <div class="comments">
-                  <a href="#" title="comment on...">97</a>
-               </div>
-
-            </div>
-
-         </article>
-
-         <article class="cf">
-
-            <div class="grid4 a-left first">
-               <h3><a href="#">Awesome Free Web Fonts</a></h3>
-               <p>March 12, 2013</p>
-            </div>
-
-            <div class="grid8 a-right">
-
-               <p>Enim urna! Et turpis ac mus arcu, placerat in proinodio, nisi, in est
-               Hac, augue ultrices phasellus elit, sociis aenean aenean Eu turpis
-               scelerisque sed eu pid, elementum aliquet, nec cras urpis magnis
-               Sagittis diam aenean? Eu turpis magnis risus nascetur magna odio
-               magna odio, nisi, in est aenean porttitor, urna egestas er odio arcu
-               Lundium facilisis odio arcu mus ultricies ac penatibus risus nascetur. <a href="#">Read More...</a> </p>
-
-               <div class="comments">
-                  <a href="#" title="comment on...">125</a>
-               </div>
-
-            </div>
-
-         </article>
-
+         {{ endfor }}
       </div>
 
 {% endblock %}

@@ -16,3 +16,7 @@ class Post(ndb.Model):
 
     def get_next(self):
         return Post.query().filter(Post.date < self.date).fetch(1)
+
+    def get_addr(self):
+        return '/blog/%d' % self.key.id()
+
