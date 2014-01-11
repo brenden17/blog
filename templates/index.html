@@ -8,9 +8,7 @@
          <h2><a href="{{ current_post.get_addr() }}">{{ current_post.title }}</a></h2>
          <p class="post-info">by <span><a href="#">chulwuk</a></span> &nbsp;
          filed in <span>
-         {% for tag in current_post.tags %}
-         <a href="#">{{ tag }}</a>
-         {% endfor %}
+         {{ current_post.get_tags()|safe }}
          </span>
          </p>
          <div class="dcontent cf">

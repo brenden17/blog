@@ -1,4 +1,14 @@
 {% extends "base.html" %}
+{% block javascript %}
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+{% endblock %}
 {% block pcurrent %}class="current"{% endblock %}
 {% block content %}
       <div id="content" class="container">
@@ -32,11 +42,7 @@
             </article>
 
             <section id="comments">
-
-               <h3>4 Responses</h3>
-
-
-
+               <h3>Responses</h3>
             </section>
 
             <section id="respond">
@@ -47,45 +53,7 @@
          <!-- sidebar
          ================================================== -->
          <aside id="sidebar" class="grid3 add-margin-top">
-
-            <h3>Text Widget</h3>
-
-            <p>
-               Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor,
-               nisi elit consequat ipsum, nec sagittis sem nibh id elit. Duis sed odio sit amet nibh vulputate
-               cursus a sit amet mauris. Morbi accumsan ipsum velit. Nam nec tellus a odio tincidunt auctor a
-               ornare odio.
-            </p>
-
-            <h3>Categories</h3>
-
-            <ul class="link-list">
-               <li><a href="#">Designs</a></li>
-               <li><a href="#">Internet</a></li>
-               <li><a href="#">Typography</a></li>
-               <li><a href="#">Photography</a></li>
-               <li><a href="#">Web Development</a></li>
-               <li><a href="#">Projects</a></li>
-               <li><a href="#">Other Stuff</a></li>
-            </ul>
-
-            <h3>Popular Post</h3>
-
-            <ul class="popular-list">
-			   	<li><a href="#">Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
-						<span>June 22, 2013</span></a>
-					</li>
-                <li><a href="#">Cras fringilla magna. Phasellus suscipit.
-						<span>June 20, 2013</span></a>
-					</li>
-                <li><a href="#">Morbi tincidunt, orci ac convallis aliquam.
-						<span>June 15, 2013</span></a>
-					</li>
-                <li><a href="#l">Ipsum dolor sit amet, consectetuer adipiscing elit.
-						<span>June 14, 2013</span></a>
-					</li>
-				</ul>
-
+         <div class="fb-comments" data-href="http://cohesive-beach-456.appspot.com/" data-numposts="5" data-colorscheme="light"></div>
          </aside> <!-- end sidebar -->
 
       </div>
