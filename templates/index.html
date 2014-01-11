@@ -41,7 +41,7 @@
       <!-- more articles
       ================================================== -->
       <div id="more-articles" class="container">
-        {{ for post in rest_posts }}
+        {% for post in rest_posts %}
          <article class="cf">
 
             <div class="grid4 a-left first">
@@ -60,7 +60,7 @@
             </div>
 
          </article>
-         {{ endfor }}
+         {% endfor %}
       </div>
 
 {% endblock %}
