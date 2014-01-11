@@ -12,10 +12,10 @@ class Post(ndb.Model):
         return cls.query().order(-cls.date).fetch(count)
 
     def get_pre(self):
-        return Post.query().filter(Post.date < self.date).fetch(1)
+        return Post.query().filter(Post.date < self.date).fetch(1)[0]
 
     def get_next(self):
-        return Post.query().filter(Post.date < self.date).fetch(1)
+        return Post.query().filter(Post.date < self.date).fetch(1)[0]
 
     def get_addr(self):
         return '/blog/%d' % self.key.id()
