@@ -276,7 +276,7 @@ hr { border: solid #ddd; border-width: 1px 0 0; clear: both; margin: 11px 0 30px
 a, a:visited {
 text-decoration: none;
 outline: 0;
-color:#696969;
+color:#a9a9a9;
 
 -webkit-transition:color .3s ease-in-out;
 -moz-transition:color .3s ease-in-out;
@@ -284,7 +284,7 @@ color:#696969;
 transition:color .3s ease-in-out;
 }
 
-a:hover, a:focus { color:#dcdcdc; }
+a:hover, a:focus { color:#a9a9a9; }
 p a, p a:visited { line-height: inherit; }
 
 
