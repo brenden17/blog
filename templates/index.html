@@ -1,6 +1,9 @@
 {% extends "base.html" %}
 {% block icurrent %}class="current"{% endblock %}
 {% block content %}
+      {% for post in posts %}
+      {{ post.title }}
+      {% endfor %}
       <!-- latest article
       ================================================== -->
       <article id="latest-article" class="container">
