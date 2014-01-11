@@ -12,11 +12,11 @@ class Post(ndb.Model):
         return cls.query().order(-cls.date).fetch(count)
 
     def get_pre(self):
-        posts = Post.query().filter(Post.date < self.date).order(Post.date).fetch(1)
+        posts = Post.query().filter(Post.date < self.date).order(-Post.date).fetch(1)
         return posts[0] if posts else None
 
     def get_next(self):
-        posts = Post.query().filter(Post.date > self.date).order(-Post.date).fetch(1)
+        posts = Post.query().filter(Post.date > self.date).order(Post.date).fetch(1)
         return posts[0] if posts else None
 
     def get_addr(self):
@@ -24,7 +24,7 @@ class Post(ndb.Model):
 
     @classmethod
     def get_tagged_post(cls, tag):
-        return cls.query().filter(Post.tags in tag)
+        return cls.query(Post.tags.IN([tag]))
 
     def get_tags(self):
         return ''.join(['<a href="/posts/%s">%s</a>' % (tag, tag) for tag in self.tags])
