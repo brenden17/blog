@@ -16,7 +16,7 @@ class Post(ndb.Model):
         return posts[0] if posts else None
 
     def get_next(self):
-        posts = Post.query().filter(Post.date > self.date).order(-Post.date).fetch(1)[0]
+        posts = Post.query().filter(Post.date > self.date).order(-Post.date).fetch(1)
         return posts[0] if posts else None
 
     def get_addr(self):

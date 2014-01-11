@@ -62,7 +62,6 @@ def create_post():
 def archives():
     return render_template('archives.html')
 
-
 @app.route('/about')
 def about():
     return render_template('about.html')
