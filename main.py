@@ -26,18 +26,29 @@ def index():
 @app.route('/blog/<int:post_id>')
 def post(post_id):
     post = Post.get_by_id(post_id)
-    pre_post = post.get_pre()
-    next_post = post.get_next()
+    pre_post = post.get_bpre()
+    next_post = post.get_bnext()
     content = Markup(markdown.markdown(post.content))
     return render_template('post.html', post=post,
                            pre_post=pre_post,
                            next_post=next_post,
                            content=content)
 
-@app.route('/posts/<tag>')
+@app.route('/log/<int:post_id>')
+def log(post_id):
+    post = Post.get_by_id(post_id)
+    pre_post = post.get_apre()
+    next_post = post.get_anext()
+    content = Markup(markdown.markdown(post.content))
+    return render_template('log.html', post=post,
+                           pre_post=pre_post,
+                           next_post=next_post,
+                           content=content)
+
+@app.route('/tags/<tag>')
 def tags(tag):
     posts = Post.get_tagged_post(tag)
-    return render_template('posts.html', posts=posts)
+    return render_template('tags.html', posts=posts)
 
 @admin_required
 @app.route('/create-post', methods=['POST', 'GET'])
@@ -58,9 +69,9 @@ def create_post():
 
     return render_template('create_post.html')
 
-@app.route('/archives')
-def archives():
-    return render_template('archives.html')
+@app.route('/posts')
+def posts():
+    return render_template('posts.html')
 
 @app.route('/about')
 def about():

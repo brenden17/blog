@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% block arcurrent %}class="current"{% endblock %}
+{% block content %}
+      <div id="content" class="container">
+      <ol>
+      {% for post in posts %}
+        <li><a href="{{ post.get_addr() }}">{{ post.title }} {{ post.data.strftime('%Y-%b-%d') }}</a></li>
+      {% endfor %}
+      </ol>
+      </div>
+{% endblock %}
