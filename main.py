@@ -26,8 +26,13 @@ def index():
 @app.route('/blog/<int:post_id>')
 def post(post_id):
     post = Post.get_by_id(post_id)
+    pre = post.get_pre()
+    next = post.get_next()
     content = Markup(markdown.markdown(post.content))
-    return render_template('post.html', post=post, content=content)
+    return render_template('post.html', post=post,
+                           pre=pre,
+                           next=next,
+                           content=content)
 
 @app.route('/blogs/')
 def posts():
@@ -53,6 +58,11 @@ def create_post():
         return redirect(url_for('/blog/', post_id=post.key.id()))
 
     return render_template('create_post.html')
+
+@app.route('/archives')
+def archives():
+    return render_template('archives.html')
+
 
 @app.route('/about')
 def about():

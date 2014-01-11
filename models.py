@@ -20,3 +20,6 @@ class Post(ndb.Model):
     def get_addr(self):
         return '/blog/%d' % self.key.id()
 
+    def get_tagged_post(self, tag):
+        return Post.query().filter(Post.tag in tag)
+

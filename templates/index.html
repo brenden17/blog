@@ -24,7 +24,7 @@
 
                <p class="dateinfo">
                   {{ current_post.date.day }}
-                  <span class="dmonth">{{ current_post.date.month }}</span>
+                  <span class="dmonth">{{ current_post.date.strftime('%b') }}</span>
                   <span class="dyear">{{ current_post.date.year }}</span>
                </p>
 
@@ -46,7 +46,7 @@
 
             <div class="grid4 a-left first">
                <h3><a href="{{ post.get_addr() }}">{{ post.title }}</a></h3>
-               <p>{{ post.date.strftime('%Y-%m-%d') }}</p>
+               <p>{{ post.date.strftime('%Y-%b-%d') }}</p>
             </div>
 
             <div class="grid8 a-right">

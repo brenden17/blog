@@ -30,17 +30,15 @@
       <!-- Header
       ================================================== -->
       <header class="container">
-            <h1><a href="/index">free lunch</a></h1>
-            <h3>공짜 점심 만들기</h3>
-
+            <h1><a href="/index">Free Lunch Project</a></h1>
+            <h3>공짜 점심 프로젝트</h3>
 
          <nav id="nav-wrap" class="cf">
 
             <ul id="menu">
 		        <li {% block icurrent %}{% endblock %}><a href="/">Home</a></li>
 	            <li {% block pcurrent %}{% endblock %}><a href="/blog">Blog</a></li>
-	            <li><a href="style-demo.htm">Style Demo</a></li>
-	            <li><a href="archives.htm">Archives</a></li>
+	            <li {% block arcurrent %}{% endblock %}><a href="/archives">Archives</a></li>
 	            <li {% block acurrent %}{% endblock %}><a href="/about">About</a></li>
             </ul> <!-- end #menu -->
 
