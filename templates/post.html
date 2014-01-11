@@ -21,12 +21,12 @@
                </p>
                <p class="tags">
 			         <span>Tagged in </span>:
-			         {{ post.get_tags() }} 
+			         {{ post.get_tags()|safe }} 
                </p>
 
                <p class="postmeta">
-				      <p>Previous : <a href="{{ pre.get_addr() }}">{{ pre.title }}</a></p>
-				      <p>Next : <a href="{{ next.get_addr() }}">{{ next.title }}</a></p>
+				      <span>Previous : <a href="{{ pre.get_addr() }}">{{ pre.title }}</a></span></br>
+				      <span>Next : <a href="{{ next.get_addr() }}">{{ next.title }}</a></span>
                </p>
 
             </article>
