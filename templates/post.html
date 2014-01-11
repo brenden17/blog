@@ -35,8 +35,12 @@
                </p>
 
                <p class="postmeta">
-				      <span>Previous : <a href="{{ pre.get_addr() }}">{{ pre.title }}</a></span></br>
-				      <span>Next : <a href="{{ next.get_addr() }}">{{ next.title }}</a></span>
+                      {% if pre_post %}
+				      <span>Previous : <a href="{{ pre_post.get_addr() }}">{{ pre_post.title }}</a></span></br>
+				      {% endif %}
+				      {% if next_post %}
+				      <span>Next : <a href="{{ next_post.get_addr() }}">{{ next_post.title }}</a></span>
+				      {% endif %}
                </p>
 
             </article>

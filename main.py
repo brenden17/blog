@@ -26,12 +26,12 @@ def index():
 @app.route('/blog/<int:post_id>')
 def post(post_id):
     post = Post.get_by_id(post_id)
-    pre = post.get_pre()
-    next = post.get_next()
+    pre_post = post.get_pre()
+    next_post = post.get_next()
     content = Markup(markdown.markdown(post.content))
     return render_template('post.html', post=post,
-                           pre=pre,
-                           next=next,
+                           pre_post=pre_post,
+                           next_post=next_post,
                            content=content)
 
 @app.route('/posts/<tag>')
