@@ -2,7 +2,9 @@
 {% block icurrent %}class="current"{% endblock %}
 {% block content %}
       {% for post in posts %}
+      {{ post.key.id }}
       {{ post.title }}
+      {{ post.date.month }}
       {% endfor %}
       <!-- latest article
       ================================================== -->
