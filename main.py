@@ -36,7 +36,7 @@ def post(post_id):
 
 @app.route('/posts/<tag>')
 def tags(tag):
-    posts = post.get_tagged_post(tag)
+    posts = Post.get_tagged_post(tag)
     return render_template('posts.html', posts=posts)
 
 @admin_required
