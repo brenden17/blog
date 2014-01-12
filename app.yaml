@@ -6,7 +6,7 @@
 # TODO: Enter your application id below. If you have signed up
 # using cloud.google.com/console use the "project id" for your application
 # id.
-application:  cohesive-beach-456 
+application: cohesive-beach-456
 version: 2
 runtime: python27
 api_version: 1
@@ -14,6 +14,9 @@ threadsafe: yes
 
 # Handlers tell app engine how to route requests to your application.
 handlers:
+
+builtins:
+- remote_api: on
 
 # Route requests to static files (and subdirectories) in the listed
 # directories.
@@ -44,3 +47,4 @@ handlers:
 libraries:
 - name: jinja2
   version: 2.6
+
