@@ -15,9 +15,10 @@ threadsafe: yes
 # Handlers tell app engine how to route requests to your application.
 handlers:
 
-builtins:
-- remote_api: on
-
+- url: /remote_api
+  script: $PYTHON_LIB/google/appengine/ext/remote_api/handler.py
+  login: admin
+  
 # Route requests to static files (and subdirectories) in the listed
 # directories.
 - url: /static
