@@ -1,5 +1,8 @@
 {% extends "base.html" %}
 {% block javascript %}
+<link rel="stylesheet" href="http://yandex.st/highlightjs/8.0/styles/default.min.css">
+<script src="http://yandex.st/highlightjs/8.0/highlight.min.js"></script>
+
 <div id="fb-root"></div>
 <script>(function(d, s, id) {
   var js, fjs = d.getElementsByTagName(s)[0];
@@ -12,7 +15,6 @@
 {% block pcurrent %}class="current"{% endblock %}
 {% block content %}
       <div id="content" class="container">
-        {{ base_url }}
          <!-- main
          ================================================== -->
          <section id="main" class="grid9 first">

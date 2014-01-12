@@ -33,6 +33,7 @@ class Post(ndb.Model):
 
     def get_anext(self):
         posts = Post.query().filter(Post.category == 'a').filter(Post.date > self.date).order(Post.date).fetch(1)
+        return posts[0] if posts else None
 
     def get_addr(self):
         if self.category == 'b':
