@@ -11,6 +11,14 @@ class Post(ndb.Model):
     def get_lastest(cls, count):
         return cls.query().order(-cls.date).fetch(count)
 
+    @classmethod
+    def get_alastest(cls, count=1):
+        return cls.query().filter(Post.category == 'a').order(-cls.date).fetch(count)
+
+    @classmethod
+    def get_blastest(cls, count=1):
+        return cls.query().filter(Post.category == 'b').order(-cls.date).fetch(count)
+
     def get_bpre(self):
         posts = Post.query().filter(Post.category == 'b').filter(Post.date < self.date).order(-Post.date).fetch(1)
         return posts[0] if posts else None

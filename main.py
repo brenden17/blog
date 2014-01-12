@@ -24,8 +24,11 @@ def index():
                            rest_posts=rest_posts)
 
 @app.route('/blog/<int:post_id>')
-def post(post_id):
-    post = Post.get_by_id(post_id)
+def post(post_id=None):
+    if post_id:
+        post = Post.get_by_id(post_id)
+    else:
+        post = Post.get_blastest()
     pre_post = post.get_bpre()
     next_post = post.get_bnext()
     content = Markup(markdown.markdown(post.content))
