@@ -16,6 +16,8 @@ app = Flask(__name__.split('.')[0])
 @app.route('/')
 def index():
     posts = Post.get_lastest(5)
+    for post in posts:
+        post.content = Markup(markdown.markdown(post.content))
     current_post = posts[0]
     rest_posts = posts[1:]
     return render_template('index.html',
