@@ -44,3 +44,6 @@ handlers:
 libraries:
 - name: jinja2
   version: 2.6
+  
+builtins:
+- remote_api: on
