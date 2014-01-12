@@ -1,9 +1,0 @@
-{% extends "base.html" %}
-{% block arcurrent %}class="current"{% endblock %}
-{% block content %}
-      <div id="content" class="container">
-      {% for post in posts %}
-        <a href="{{ post.get_addr() }}">{{ post.title }}</a>
-      {% endfor %}
-      </div>
-{% endblock %}

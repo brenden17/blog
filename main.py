@@ -10,7 +10,6 @@ from flask import Markup
 import markdown
 
 from models import Post
-from decorator import login_required, admin_required
 
 app = Flask(__name__.split('.')[0])
 
@@ -38,9 +37,10 @@ def post(post_id=None):
                            next_post=next_post,
                            content=content,
                            base_url=base_url)
-@app.route('/log/')
-@app.route('/log/<int:post_id>')
-def log(post_id=None):
+@app.route('/page/')
+@app.route('/page/<int:post_id>')
+def page(post_id=None):
+    base_url = request.base_url
     if post_id:
         post = Post.get_by_id(post_id)
     else:
@@ -48,17 +48,17 @@ def log(post_id=None):
     pre_post = post.get_apre()
     next_post = post.get_anext()
     content = Markup(markdown.markdown(post.content))
-    return render_template('log.html', post=post,
+    return render_template('page.html', post=post,
                            pre_post=pre_post,
                            next_post=next_post,
-                           content=content)
+                           content=content,
+                           base_url=base_url)
 
 @app.route('/tags/<tag>')
 def tags(tag):
     posts = Post.get_tagged_post(tag)
     return render_template('tags.html', posts=posts)
 
-@admin_required
 @app.route('/create-post', methods=['POST', 'GET'])
 def create_post():
     if request.method == 'POST':
@@ -76,10 +76,6 @@ def create_post():
         return redirect(url_for('/blog/', post_id=post.key.id()))
 
     return render_template('create_post.html')
-
-@app.route('/posts')
-def posts():
-    return render_template('posts.html')
 
 @app.route('/about')
 def about():

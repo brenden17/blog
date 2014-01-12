@@ -38,7 +38,7 @@ class Post(ndb.Model):
         if self.category == 'b':
             return '/blog/%d' % self.key.id()
         else:
-            return '/log/%d' % self.key.id()
+            return '/page/%d' % self.key.id()
 
     @classmethod
     def get_tagged_post(cls, tag):

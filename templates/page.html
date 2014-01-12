@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+{% block javascript %}
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+{% endblock %}
+{% block pcurrent %}class="current"{% endblock %}
+{% block content %}
+      <div id="content" class="container">
+
+         <!-- main
+         ================================================== -->
+         <section id="main" class="grid9 first">
+
+            <article>
+               <h2 class="huge">{{ post.title }}</h2>
+               <p class="post-info">by <span><a href="#">chulwuk</a></span>
+                   &nbsp; filed in <span>
+                   {{ post.get_tags()|safe }}
+                   </span>
+               </p>
+               <p class="lead">
+               {{ content }}
+               </p>
+               <p class="tags">
+			         <span>Tagged in </span>:
+			         {{ post.get_tags()|safe }} 
+               </p>
+
+               <p class="postmeta">
+                      {% if pre_post %}
+				      <span>Previous : <a href="{{ pre_post.get_addr() }}">{{ pre_post.title }}</a></span></br>
+				      {% endif %}
+				      {% if next_post %}
+				      <span>Next : <a href="{{ next_post.get_addr() }}">{{ next_post.title }}</a></span>
+				      {% endif %}
+               </p>
+
+            </article>
+
+            <section id="comments">
+               <h3>Responses</h3>
+            </section>
+
+            <section id="respond">
+
+         </section> <!-- end main -->
+
+
+         <!-- sidebar
+         ================================================== -->
+         <aside id="sidebar" class="grid3 add-margin-top">
+         <div class="fb-comments" data-href="http://cohesive-beach-456.appspot.com/" data-numposts="5" data-colorscheme="light"></div>
+         </aside> <!-- end sidebar -->
+
+      </div>
+{% endblock %}
