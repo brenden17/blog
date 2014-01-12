@@ -12,7 +12,7 @@
 {% block pcurrent %}class="current"{% endblock %}
 {% block content %}
       <div id="content" class="container">
-
+        {{ base_url }}
          <!-- main
          ================================================== -->
          <section id="main" class="grid9 first">
@@ -51,11 +51,10 @@
 
          </section> <!-- end main -->
 
-
          <!-- sidebar
          ================================================== -->
          <aside id="sidebar" class="grid3 add-margin-top">
-         <div class="fb-comments" data-href="http://cohesive-beach-456.appspot.com/" data-width="610px" data-numposts="5" data-colorscheme="light"></div>
+         <div class="fb-comments" data-href="{{ base_url }}" data-width="610px" data-numposts="5" data-colorscheme="light"></div>
          </aside> <!-- end sidebar -->
 
       </div>
