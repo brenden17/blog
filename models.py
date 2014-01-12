@@ -12,19 +12,19 @@ class Post(ndb.Model):
         return cls.query().order(-cls.date).fetch(count)
 
     def get_bpre(self):
-        posts = Post.query().filter(Post.category == 'b').filter(Post.date < self.date).order(-Post.date).fetch(1)
+        posts = Post.query().filter(Post.date < self.date).filter(Post.category == 'b').order(-Post.date).fetch(1)
         return posts[0] if posts else None
 
     def get_bnext(self):
-        posts = Post.query().filter(Post.category == 'b').filter(Post.date > self.date).order(Post.date).fetch(1)
+        posts = Post.query().filter(Post.date > self.date).filter(Post.category == 'b').order(Post.date).fetch(1)
         return posts[0] if posts else None
 
     def get_apre(self):
-        posts = Post.query().filter(Post.category == 'a').filter(Post.date < self.date).order(-Post.date).fetch(1)
+        posts = Post.query().filter(Post.date < self.date).filter(Post.category == 'a').order(-Post.date).fetch(1)
         return posts[0] if posts else None
 
     def get_anext(self):
-        posts = Post.query().filter(Post.category == 'a').filter(Post.date > self.date).order(Post.date).fetch(1)
+        posts = Post.query().filter(Post.date > self.date).filter(Post.category == 'a').order(Post.date).fetch(1)
 
     def get_addr(self):
         if self.category == 'b':
