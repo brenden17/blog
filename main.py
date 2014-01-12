@@ -22,7 +22,7 @@ def index():
     return render_template('index.html',
                            current_post=current_post,
                            rest_posts=rest_posts)
-
+@app.route('/blog/')
 @app.route('/blog/<int:post_id>')
 def post(post_id=None):
     if post_id:
@@ -36,7 +36,7 @@ def post(post_id=None):
                            pre_post=pre_post,
                            next_post=next_post,
                            content=content)
-
+@app.route('/log/')
 @app.route('/log/<int:post_id>')
 def log(post_id):
     post = Post.get_by_id(post_id)
