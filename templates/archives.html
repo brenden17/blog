@@ -1,9 +1,18 @@
 {% extends "base.html" %}
-{% block arcurrent %}class="current"{% endblock %}
+{% block acurrent %}class="current"{% endblock %}
 {% block content %}
       <div id="content" class="container">
-      {% for post in posts %}
-        <a href="{{ post.get_addr() }}">{{ post.title }}</a>
+      <h3>Blog</h3>
+      <ol>
+      {% for post in blogs %}
+        <li>{{ post.date.strftime('%Y %b-%d') }} <a href="{{ post.get_addr() }}">{{ post.title }}</a> | tags : {{ post.get_tags()|safe }} </li>
       {% endfor %}
+      </ol>
+      <h3>Page</h3>
+      <ol>
+      {% for post in pages %}
+        <li>{{ post.date.strftime('%Y %b-%d') }} <a href="{{ post.get_addr() }}">{{ post.title }}</a> | tags : {{ post.get_tags()|safe }} </li>
+      {% endfor %}
+      </ol>
       </div>
 {% endblock %}

@@ -23,20 +23,18 @@ def create_post(filename):
         category = txt[0].strip()
         title = txt[1].strip()
         tags = txt[2].strip().split(',')
-        content = '\n'.join(txt[3:])
+        content = ''.join(txt[3:])
 
     postid = get_postid(filename)
     print 'postid...', postid
     if not postid:
-        post = Post(category=category,
+        key = Post(category=category,
                     title=title,
                     tags=tags,
-                    content=content)
-        key = post.put()
-        print 'key...', key
+                    content=content).put()
         print 'key...', key.id()
         set_postid(filename, key.id())
-        print 'New Post save'
+        print 'New post saved'
     else:
         post = Post.get_by_id(int(postid))
         post.category = category
@@ -44,4 +42,4 @@ def create_post(filename):
         post.tags = tags
         post.content = content
         post.put()
-        print 'Existed Post save'
+        print 'Existed post saved'

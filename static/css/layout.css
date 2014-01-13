@@ -68,11 +68,12 @@ footer {
    font-size: 30px;
    line-height: 72px;
    font-weight: bold;
-   color: #808080;
+   color: #000000;
    letter-spacing: -1px;
    margin-bottom: 0px;
 }
 #title-section p, #latest-article p {
+   color: #000000;
    font-size: 19px;
    margin-right: 82px;
 }
@@ -362,7 +363,7 @@ header #nav-wrap {
    font-weight: bold;
    font-size: 22px;
    line-height: 30px;
-   color: #666666;
+   color: #000000;
    margin-bottom: 6px;
 }
 #more-articles .a-left p {
@@ -859,4 +860,7 @@ footer ul.photostream li a {
 }
 #go-top a:hover { background-color: #1E83B6; }
 
+.cf p {
+   color: #0000;
+}
 

@@ -4,7 +4,7 @@
       <div id="content" class="container">
       <ol>
       {% for post in posts %}
-        <li><a href="{{ post.get_addr() }}">{{ post.title }} {{ post.date.strftime('%Y-%b-%d') }}</a></li>
+        <li>{{ post.date.strftime('%Y %b-%d') }} <a href="{{ post.get_addr() }}">{{ post.title }}</a></li>
       {% endfor %}
       </ol>
       </div>

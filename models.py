@@ -8,8 +8,11 @@ class Post(ndb.Model):
     tags = ndb.StringProperty(repeated=True)
 
     @classmethod
-    def get_lastest(cls, count):
-        return cls.query().order(-cls.date).fetch(count)
+    def get_lastest(cls, category=None, count=5):
+        if not category:
+            return cls.query().order(-cls.date).fetch(count)
+        else:
+            return cls.query().filter(Post.category == category).order(-cls.date).fetch(count)
 
     @classmethod
     def get_alastest(cls, count=1):

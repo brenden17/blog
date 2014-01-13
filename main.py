@@ -13,14 +13,17 @@ from models import Post
 
 app = Flask(__name__.split('.')[0])
 
+def md2html(content):
+    return Markup(markdown.markdown(content))
+
 @app.route('/')
 def index():
-    posts = Post.get_lastest(5)
+    posts = Post.get_lastest()
     for i, post in enumerate(posts):
         if i == 0:
-            post.content = Markup(markdown.markdown(post.content))[:200] + '....'
+            post.content = md2html(post.content)[:200] + '....'
         else:
-            post.content = Markup(markdown.markdown(post.content))[:150] + '....'
+            post.content = md2html(post.content)[:150] + '....'
     current_post = posts[0]
     rest_posts = posts[1:]
     return render_template('index.html',
@@ -36,7 +39,7 @@ def post(post_id=None):
         post = Post.get_blastest()
     pre_post = post.get_bpre()
     next_post = post.get_bnext()
-    content = Markup(markdown.markdown(post.content))
+    content = md2html(post.content)
     return render_template('post.html', post=post,
                            pre_post=pre_post,
                            next_post=next_post,
@@ -52,7 +55,7 @@ def page(post_id=None):
         post = Post.get_alastest()
     pre_post = post.get_apre()
     next_post = post.get_anext()
-    content = Markup(markdown.markdown(post.content))
+    content = md2html(post.content)
     return render_template('page.html', post=post,
                            pre_post=pre_post,
                            next_post=next_post,
@@ -64,23 +67,12 @@ def tags(tag):
     posts = Post.get_tagged_post(tag)
     return render_template('tags.html', posts=posts)
 
-@app.route('/create-post', methods=['POST', 'GET'])
-def create_post():
-    if request.method == 'POST':
-        category = request.form['category'] or 'b'
-        title = request.form['title'] or 'No title'
-        content = request.form['content'] or 'No Content'
-        tags = request.form['tags']
-        if tags:
-            tags = map(lambda x: x.strip(), tags.split(','))
-        else:
-            tags = ['']
-        post = Post(category=category,
-                    title=title, content=content, tags=tags)
-        post.put()
-        return redirect(url_for('/blog/', post_id=post.key.id()))
+@app.route('/archives')
+def archives():
+    blogs = Post.get_lastest(category='b', count=999)
+    pages = Post.get_lastest(category='a', count=999)
+    return render_template('archives.html', blogs=blogs, pages=pages)
 
-    return render_template('create_post.html')
 
 @app.route('/about')
 def about():

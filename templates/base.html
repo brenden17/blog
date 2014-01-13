@@ -16,6 +16,8 @@
    ================================================== -->
 	<link rel="stylesheet" href="/static/css/base.css">
 	<link rel="stylesheet" href="/static/css/layout.css">
+	<link rel="shortcut icon" href="/static/images/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="/static/images/favicon.ico" type="image/x-icon">
 
 	<!--[if lt IE 9]>
 		<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
@@ -31,7 +33,7 @@
       ================================================== -->
       <header class="container">
             <h1><a href="/">Free Lunch Plan</a></h1>
-            <h3>공짜 점심 기획</h3>
+            <h3>공짜 점심 만들기 기획</h3>
 
          <nav id="nav-wrap" class="cf">
 
@@ -39,7 +41,8 @@
 		        <li {% block icurrent %}{% endblock %}><a href="/">Home</a></li>
 	            <li {% block pcurrent %}{% endblock %}><a href="/blog">Blog</a></li>
 	            <li {% block arcurrent %}{% endblock %}><a href="/page">Page</a></li>
-	            <li {% block acurrent %}{% endblock %}><a href="/about">About</a></li>
+	            <li {% block aburrent %}{% endblock %}><a href="/about">About</a></li>
+	            <li {% block acurrent %}{% endblock %}><a href="/archives">Archives</a></li>
             </ul> <!-- end #menu -->
          </nav>
 
@@ -69,7 +72,7 @@
    <footer class="container">
        <aside class="pull-quote">
              <blockquote>
-             <p>Most people are about as happy as they make up their minds to be.</p>
+             <p>Most people are about as happy as they make up their minds to be. (대부분의 사람은 마음먹은 만큼 행복하다.) </p>
              <cite>Abraham Lincoln</cite>
              </blockquote>
        </aside>

@@ -63,6 +63,11 @@ footer,header,hgroup,menu,nav,section {
    display: block;
 }
 
+article p {
+    color: #000000;
+    font-size: 19px;
+}
+
 audio,
 canvas,
 video {
