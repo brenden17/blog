@@ -1,5 +1,5 @@
 a
-imbalanced data 해결하기
+imbalanced data 처리하기
 ml, sklearn, pandas
 ### 개요
 
@@ -22,10 +22,6 @@ ml, sklearn, pandas
 다른 방법인 오분류 비용은 원본 데이터를ㄹ 그대로 유지하면서 소수 범주 오분류에 가중치를 주어 데이터의 불균형을 해소하는 방법이다.
 의사 결정 나무나 로지스틱 회귀분석에서 목표 변수에 가중치를 다르게 준다.
 
-전체적으로 다음 소스를 참고한다.
-
-    https://github.com/brenden17/imbalanced-data
-    
 
 ### 간단한 구현
 간단하게 구현해 보자.
@@ -33,19 +29,25 @@ ml, sklearn, pandas
 데이터의 구성 비율을 먼저 체크해 보자.
 
     def read_file():
-        return pd.read_csv(get_fullpath('balance-scale.data'), delimiter=',')
+        return pd.read_csv(get_fullpath('balance-scale.data'), delimiter=',',
+                       names=['class', 'lweight', 'ldist', 'rweight', 'rdist'])
 
     def analysis_data():
         df = read_file()
-        print 'Class L - ', df[df['B'] == 'L'].shape[0]
-        print 'Class B - ', df[df['B'] == 'B'].shape[0]
-        print 'Class R - ', df[df['B'] == 'R'].shape[0]
+        X_outlier = df[df['class'] == 'B'] # .ix[idx]
+        X_train = df[df['class'] == 'L']
     
-    # result 
-    Class L -  288
-    Class B -  48
-    Class R -  288
-        
+        fig = plt.figure()
+        ax = plt.axes(projection='3d')
+        ax.scatter(X_outlier['lweight'], X_outlier['ldist'],
+                   X_outlier['rweight'], c='r')
+        ax.scatter(X_train['lweight'], X_train['ldist'],
+                   X_train['rweight'], c='b')
+        ax.set_xlabel('left weight')
+        ax.set_ylabel('left dist')
+        ax.set_zlabel('right weight')
+        plt.show()
+    
 Class B가 다른 범주보다 1/6정도 작다. 이정도면 괜찮을 듯 하다. 그리고 기본적으로 데이터는 무작위로 구성되어 있다.
 3가지 방법으로 표본화 한 후, Ensemble Tree, SVM, Logistic Regression으로 평가하고자 한다.
 
@@ -53,10 +55,10 @@ Class B가 다른 범주보다 1/6정도 작다. 이정도면 괜찮을 듯 하�
 
     def load_undersampling():
         rawdata = read_file()
-        n_sample = rawdata[rawdata['B'] == 'B'].shape[0]
-        B = rawdata[rawdata['B'] == 'B']
-        L = rawdata[rawdata['B'] == 'L'][:n_sample]
-        R = rawdata[rawdata['B'] == 'R'][:n_sample]
+        n_sample = rawdata[rawdata['class'] == 'B'].shape[0]
+        B = rawdata[rawdata['class'] == 'B']
+        L = rawdata[rawdata['class'] == 'L'][:n_sample]
+        R = rawdata[rawdata['class'] == 'R'][:n_sample]
         d = pd. concat([B, L, R])
         le = LabelEncoder()
         X = d.icol(range(1, 5)).values
@@ -69,7 +71,7 @@ Class B가 다른 범주보다 1/6정도 작다. 이정도면 괜찮을 듯 하�
     def load_data_with_SMOTE():
         rawdata = read_file()
         size = 150
-        small = rawdata[rawdata['B'] == 'B']
+        small = rawdata[rawdata['class'] == 'B']
         n_sample = small.shape[0]
         idx = np.random.randint(0, n_sample, size)
         X = small.iloc[idx, range(1, 5)].values
@@ -83,9 +85,9 @@ Class B가 다른 범주보다 1/6정도 작다. 이정도면 괜찮을 듯 하�
         B = np.concatenate([np.transpose(y[np.newaxis]), X], axis=1)
         B = pd.DataFrame(B)
     
-        n_sample = rawdata[rawdata['B'] == 'L'].shape[0]
+        n_sample = rawdata[rawdata['class'] == 'L'].shape[0]
         idx = np.random.randint(0, n_sample, size)
-        L = rawdata[rawdata['B'] == 'L'].iloc[idx]
+        L = rawdata[rawdata['class'] == 'L'].iloc[idx]
 
 
 #### 과표본화 기반 앙상블
@@ -95,23 +97,23 @@ Class B가 다른 범주보다 1/6정도 작다. 이정도면 괜찮을 듯 하�
     def load_sampling():
         size = 200
         rawdata = read_file()
-        n_sample = rawdata[rawdata['B'] == 'B'].shape[0]
+        n_sample = rawdata[rawdata['class'] == 'B'].shape[0]
         idx = np.random.randint(0, n_sample, size)
-        B = rawdata[rawdata['B'] == 'B'].iloc[idx]
+        B = rawdata[rawdata['class'] == 'B'].iloc[idx]
     
-        n_sample = rawdata[rawdata['B'] == 'L'].shape[0]
+        n_sample = rawdata[rawdata['class'] == 'L'].shape[0]
         idx = np.random.randint(0, n_sample, size)
-        L = rawdata[rawdata['B'] == 'L'].iloc[idx]
+        L = rawdata[rawdata['class'] == 'L'].iloc[idx]
     
-        n_sample = rawdata[rawdata['B'] == 'R'].shape[0]
+        n_sample = rawdata[rawdata['class'] == 'R'].shape[0]
         idx = np.random.randint(0, n_sample, size)
-        R = rawdata[rawdata['B'] == 'R'].iloc[idx]
+        R = rawdata[rawdata['class'] == 'R'].iloc[idx]
     
         df = pd.concat([B, L, R])
     
         le = LabelEncoder()
         X = df.icol(range(1, 5)).values
-        y = le.fit_transform(df['B'].values)
+        y = le.fit_transform(df['class'].values)
         return X, y
 
 
@@ -129,5 +131,8 @@ Class B가 다른 범주보다 1/6정도 작다. 이정도면 괜찮을 듯 하�
 
  **과표본화 기반 앙상블**이 가장 좋은 결과를 만든다.
 
+전체적으로 다음 소스를 참고한다.
 
-
+    https://github.com/brenden17/imbalanced-data
+ 
+ 

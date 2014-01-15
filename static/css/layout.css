@@ -74,7 +74,7 @@ footer {
 }
 #title-section p, #latest-article p {
    color: #000000;
-   font-size: 19px;
+   font-size: 16px;
    margin-right: 82px;
 }
 
@@ -181,8 +181,8 @@ header #nav-wrap {
    text-align: left;
 }
 #menu li {
-	position: relative;
-	list-style: none;
+   position: relative;
+   list-style: none;
    height: 36px;
    margin: 0;
    float: left;
@@ -198,10 +198,10 @@ header #nav-wrap {
    padding: 0 16px;
    margin: 0;
    line-height: 36px;
-	text-decoration: none;
-	font-family: "Open Sans", Sans-Serif;
-	font-weight: bold;
-	font-size: 14px;
+   text-decoration: none;
+   font-family: "Open Sans", Sans-Serif;
+   font-weight: bold;
+   font-size: 18px;
    color: #AFAFB1;
 
    text-shadow: 1px 1px 0 rgba(255, 255, 255, 1);

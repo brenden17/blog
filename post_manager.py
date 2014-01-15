@@ -1,3 +1,5 @@
+from google.appengine.api import search
+
 from models import Post
 
 BASEDIR = './post/'
