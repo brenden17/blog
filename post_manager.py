@@ -1,12 +1,15 @@
+from string import strip
+
 from google.appengine.api import search
+from google.appengine.ext import ndb
 
 from models import Post
 
-BASEDIR = './post/'
-BIFILE = BASEDIR + 'blog.ini'
+POSTBASEDIR = './post/'
+POSTBIFILE = POSTBASEDIR + 'blog.ini'
 
 def get_postid(filename):
-    with open(BIFILE) as f:
+    with open(POSTBIFILE) as f:
         lines = f.readlines()
         for line in lines:
             savedfilename, postid = line.split(',')
@@ -15,16 +18,16 @@ def get_postid(filename):
         return None
 
 def set_postid(filename, postid):
-    with open(BIFILE, 'a') as f:
+    with open(POSTBIFILE, 'a') as f:
         f.write('{0},{1}\n'.format(filename.strip(), postid))
 
 def create_post(filename):
-    filename = BASEDIR + filename
+    filename = POSTBASEDIR + filename
     with open(filename) as f:
         txt = f.readlines()
         category = txt[0].strip()
         title = txt[1].strip()
-        tags = txt[2].strip().split(',')
+        tags = map(strip, txt[2].strip().split(','))
         content = ''.join(txt[3:])
 
     postid = get_postid(filename)
@@ -45,3 +48,4 @@ def create_post(filename):
         post.content = content
         post.put()
         print 'Existed post saved'
+

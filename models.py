@@ -1,5 +1,11 @@
 from google.appengine.ext import ndb
 
+
+BLOG = 'blog'
+PAGE = 'page'
+BOOK = 'book'
+
+
 class Post(ndb.Model):
     category = ndb.StringProperty(required=True)
     title = ndb.StringProperty(required=True)
@@ -8,41 +14,36 @@ class Post(ndb.Model):
     tags = ndb.StringProperty(repeated=True)
 
     @classmethod
-    def get_lastest(cls, category=None, count=5):
+    def get_lastest(cls, count=5, category=None):
         if not category:
             return cls.query().order(-cls.date).fetch(count)
         else:
-            return cls.query().filter(Post.category == category).order(-cls.date).fetch(count)
+            return cls.query().filter(Post.category==category).order(-cls.date).fetch(count)
 
     @classmethod
-    def get_alastest(cls, count=1):
-        return cls.query().filter(Post.category == 'a').order(-cls.date).fetch(count)[0]
-
-    @classmethod
-    def get_blastest(cls, count=1):
-        return cls.query().filter(Post.category == 'b').order(-cls.date).fetch(count)[0]
-
-    def get_bpre(self):
-        posts = Post.query().filter(Post.category == 'b').filter(Post.date < self.date).order(-Post.date).fetch(1)
-        return posts[0] if posts else None
-
-    def get_bnext(self):
-        posts = Post.query().filter(Post.category == 'b').filter(Post.date > self.date).order(Post.date).fetch(1)
-        return posts[0] if posts else None
-
-    def get_apre(self):
-        posts = Post.query().filter(Post.category == 'a').filter(Post.date < self.date).order(-Post.date).fetch(1)
-        return posts[0] if posts else None
-
-    def get_anext(self):
-        posts = Post.query().filter(Post.category == 'a').filter(Post.date > self.date).order(Post.date).fetch(1)
-        return posts[0] if posts else None
-
-    def get_addr(self):
-        if self.category == 'b':
-            return '/blog/%d' % self.key.id()
+    def get_1lastest(cls, count=1, category=None):
+        if not category:
+            return cls.query().order(-cls.date).fetch(count)[0]
         else:
-            return '/page/%d' % self.key.id()
+            return cls.query().filter(Post.category==category).order(-cls.date).fetch(count)[0]
+
+
+    def get_post(self, pre=True, category=None):
+        posts = Post.query().filter(Post.category==category)
+        if pre:
+            posts = posts.filter(Post.date < self.date).order(-Post.date).fetch(1)
+        else:
+            posts = posts.filter(Post.date > self.date).order(Post.date).fetch(1)
+        return posts[0] if posts else None
+
+    def get_pre(self, category=None):
+        return self.get_post(category=category)
+    
+    def get_next(self, category=None):
+        return self.get_post(pre=False, category=category)
+    
+    def get_addr(self):
+        return '/%s/%d' % (self.category, self.key.id())
 
     @classmethod
     def get_tagged_post(cls, tag):

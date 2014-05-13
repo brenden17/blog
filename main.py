@@ -1,10 +1,6 @@
-import os
-import sys
-
-# sys.path includes 'server/lib' due to appengine_config.py
 from flask import Flask
 from flask import render_template
-from flask import redirect, url_for, request
+from flask import request
 from flask import Markup
 
 import markdown
@@ -18,49 +14,42 @@ def md2html(content):
 
 @app.route('/')
 def index():
-    posts = Post.get_lastest()
-    for i, post in enumerate(posts):
-        if i == 0:
-            post.content = md2html(post.content)[:200] + '....'
-        else:
-            post.content = md2html(post.content)[:150] + '....'
-    current_post = posts[0]
-    rest_posts = posts[1:]
+    post = Post.get_1lastest()
+    content = md2html(post.content)
     return render_template('index.html',
-                           current_post=current_post,
-                           rest_posts=rest_posts)
-@app.route('/blog/')
-@app.route('/blog/<int:post_id>')
-def post(post_id=None):
-    base_url = request.base_url
+                           post=post,
+                           content=content)
+    
+def post(post_id=None, category=None):
     if post_id:
         post = Post.get_by_id(post_id)
     else:
-        post = Post.get_blastest()
-    pre_post = post.get_bpre()
-    next_post = post.get_bnext()
+        post = Post.get_1lastest(category=category)
+
+    pre_post = post.get_pre(category=category)
+    next_post = post.get_next(category=category)
     content = md2html(post.content)
-    return render_template('post.html', post=post,
+    return render_template('post.html',
+                           post=post,
                            pre_post=pre_post,
                            next_post=next_post,
                            content=content,
-                           base_url=base_url)
+                           base_url=request.base_url)
+
+@app.route('/blog/')
+@app.route('/blog/<int:post_id>')
+def blog(post_id=None):
+    return post(post_id, category='blog')
+
 @app.route('/page/')
 @app.route('/page/<int:post_id>')
 def page(post_id=None):
-    base_url = request.base_url
-    if post_id:
-        post = Post.get_by_id(post_id)
-    else:
-        post = Post.get_alastest()
-    pre_post = post.get_apre()
-    next_post = post.get_anext()
-    content = md2html(post.content)
-    return render_template('page.html', post=post,
-                           pre_post=pre_post,
-                           next_post=next_post,
-                           content=content,
-                           base_url=base_url)
+    return post(post_id, category='page')
+
+@app.route('/book/')
+@app.route('/book/<int:post_id>')
+def book(post_id=None):
+    return post(post_id, category='book')
 
 @app.route('/tags/<tag>')
 def tags(tag):
@@ -69,10 +58,13 @@ def tags(tag):
 
 @app.route('/archives')
 def archives():
-    blogs = Post.get_lastest(category='b', count=999)
-    pages = Post.get_lastest(category='a', count=999)
-    return render_template('archives.html', blogs=blogs, pages=pages)
-
+    blogs = Post.get_lastest(count=999, category='blog')
+    pages = Post.get_lastest(count=999, category='page')
+    books = Post.get_lastest(count=999, category='book')
+    return render_template('archives.html',
+                           blogs=blogs,
+                           pages=pages,
+                           books=books)
 
 @app.route('/about')
 def about():

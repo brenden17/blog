@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]> <html class="no-js ie6" lang="en"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js ie7" lang="en"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js ie8" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!-->  <html class="no-js" lang="en"> <!--<![endif]-->
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	
+	<title>pydown</title>
+	
+	<meta name="description" content="A jQuery library for modern HTML presentations">
+	<meta name="author" content="Caleb Troughton">
+	<meta name="viewport" content="width=1024, user-scalable=no">
+	
+	<!-- Core and extension CSS files -->
+	<link rel="stylesheet" href="css/deck.core.css">
+	<link rel="stylesheet" href="css/deck.status.css">
+	<link rel="stylesheet" href="css/deck.scale.css">
+	
+	<!-- Style theme. More available in /themes/style/ or create your own. -->
+	<link rel="stylesheet" href="css/web-2.0.css">
+	
+	<!-- Transition theme. More available in /themes/transition/ or create your own. -->
+	<link rel="stylesheet" href="css/horizontal-slide.css">
+
+	<link rel="stylesheet" href="css/md_hl.css">
+	
+	<script src="js/modernizr.custom.js"></script>
+</head>
+
+<body class="deck-container">
+
+<!-- Begin slides -->
+<section class="slide "><div class="content"><h2>Python and R for Machine Learning (#1)</h2>
+<h3>기계 학습이란</h3>
+<p><strong>Machine learning</strong>, a branch of artificial intelligence, concerns the construction and study of systems that can learn from data - <a href="http://en.wikipedia.org/wiki/Machine_learning">wikipedia</a></p>
+<p>한마디로, 기계가 데이터를 공부(훈련)하여 <em>무엇가</em> 예측함</p></div></section>
+<section class="slide "><div class="content"><h2>어디서 들어본거 같은데...</h2>
+<ul>
+<li>Data Mining</li>
+<li>NLP(Natural Language Processing)</li>
+<li>Image Processing</li>
+<li>Bioinformatics</li>
+</ul></div></section>
+<section class="slide "><div class="content"><blockquote>
+<p>..... 제가 잘 모르는 면이 있어서, 학구적인 의구심을 갖고 쓰는 글이니 노여워하지 마세요. <strong>데이터 분석을 하는 데 있어서 사람들이 파이썬 파이썬 하는 데에는 이유가 있을 것 같은데, 솔직히 저는 아직 잘 모르겠는데요</strong>.
+그냥, 범용 프로그래밍 언어 치고는 프로그래밍이 정말 쉽다는 것 정도? (이것 때문에 부각되는 것일까요?)
+성능 면에서는 별로 좋지는 않은 퍼포먼스라고 저는 평가를 하고 있고, <strong>차라리 R이나 MATLAB 같은 데이터분석용 스크립트 언어를 쓰는게 차라리 좋다고 보고 있는데</strong>, ..... 진짜 장점은 무엇일까요?</p>
+</blockquote>
+<p>Jaeseong Yoo, Python Korea, Facebook</p></div></section>
+<section class="slide "><div class="content"><h2>Python and R</h2>
+<h3>Python vs R</h3>
+<p><strong>scipy, numpy, matplotlib, pandas '=. R</strong></p>
+<h3>Tools for Machine Learning</h3>
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th align="center">Scikit-Learn</th>
+<th align="right">R package</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Nearest Neighbor</td>
+<td align="center">sklearn.neighbors</td>
+<td align="right">knn() in class</td>
+</tr>
+<tr>
+<td>naive Bayes</td>
+<td align="center">sklearn.naive_bayes</td>
+<td align="right">naiveBayes in e1071</td>
+</tr>
+<tr>
+<td>Support Vector Machines</td>
+<td align="center">sklearn.svm</td>
+<td align="right">svn() in kernl</td>
+</tr>
+<tr>
+<td>k-means</td>
+<td align="center">sklearn.cluster.kmeans</td>
+<td align="right">kmeans() in stats</td>
+</tr>
+<tr>
+<td>...</td>
+<td align="center">...</td>
+<td align="right">...</td>
+</tr>
+</tbody>
+</table></div></section>
+<section class="slide "><div class="content"><h2>If...</h2>
+<ul>
+<li>나에게 조금 큰 이미지파일이나 MP3 사이트를 분석, 예측하라면? Python</li>
+<li>나에게 정규화된 CSV 파일을 분석, 예측하라면? R</li>
+<li>나에게 비정규화된 파일 덩어리를 분석, 예측하라면? Hadoop, Pig, Python, R</li>
+<li>잘 모르겠다? Python (#2 Next time.)</li>
+</ul></div></section>
+<section class="slide "><div class="content"><h2>Reference-1</h2>
+<h3>Building Machine Learning System with Python (한국어판)</h3>
+<p><img alt="Building Machine Learning System with Python" src="http://ecx.images-amazon.com/images/I/51kMAMAiMPL.jpg" /></p>
+<h3>Learning scikit-learn: Machine Learning in Python (Coming Soon)</h3>
+<p><img alt="Learning scikit-learn: Machine Learning in Python" src="http://ecx.images-amazon.com/images/I/51t3OZQ4JcL.jpg" /></p>
+<h3>Machine Learning in R (Coming Soon)</h3>
+<p><img alt="machine learning in r" src="http://ecx.images-amazon.com/images/I/512qvO%2BjYBL.jpg" /></p></div></section>
+<section class="slide "><div class="content"><h2>Reference-2</h2>
+<h3>On Intelligence(생각하는 뇌, 생각하는 기계)</h3>
+<p><img alt="on intelligence" src="http://ecx.images-amazon.com/images/I/41TDaUFtxeL.jpg" /></p></div></section>
+
+
+<!-- deck.status snippet -->
+<p class="deck-status">
+	<span class="deck-status-current"></span>
+	/
+	<span class="deck-status-total"></span>
+</p>
+
+<!-- Grab CDN jQuery, with a protocol relative URL; fall back to local if offline -->
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+<script>window.jQuery || document.write('<script src="js/jquery-1.7.2.min.js"><\/script>')</script>
+
+<!-- Deck Core and extensions -->
+<script src="js/deck.core.js"></script>
+<script src="js/deck.status.js"></script>
+<script src="js/deck.scale.js"></script>
+
+<!-- Initialize the deck -->
+<script>
+$(function() {
+	$.deck('.slide');
+});
+</script>
+
+</body>
+</html>

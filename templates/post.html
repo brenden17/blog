@@ -1,4 +1,4 @@
-{% extends "base.html" %}
+{% extends "base_.html" %}
 {% block javascript %}
 <link rel="stylesheet" href="/static/css/default.css">
 <script src="/static/js/highlight.pack.js"></script>
@@ -13,52 +13,22 @@
   fjs.parentNode.insertBefore(js, fjs);
 }(document, 'script', 'facebook-jssdk'));</script>
 {% endblock %}
-{% block pcurrent %}class="current"{% endblock %}
 {% block content %}
-      <div id="content" class="container">
-         <!-- main
-         ================================================== -->
-         <section id="main" class="grid10 first">
-
-            <article>
-               <h2 class="huge"><a href="{{ post.get_addr() }}">{{ post.title }}</a></h2>
-               <p class="post-info">by <span><a href="#">chulwuk</a></span>
-                   &nbsp; tagged in <span>
-                   {{ post.get_tags()|safe }}
-                   </span>
-               </p>
-               <p class="lead">
-               {{ content }}
-               </p>
-               <p class="tags">
-			         <span>Tagged in </span>:
-			         {{ post.get_tags()|safe }} 
-               </p>
-
-               <p class="postmeta">
-                      {% if pre_post %}
-				      <span>Previous : <a href="{{ pre_post.get_addr() }}">{{ pre_post.title }}</a></span></br>
-				      {% endif %}
-				      {% if next_post %}
-				      <span>Next : <a href="{{ next_post.get_addr() }}">{{ next_post.title }}</a></span>
-				      {% endif %}
-               </p>
-
-            </article>
-
-            <section id="comments">
-               <h3>Responses</h3>
-            </section>
-
-            <section id="respond">
-
-         </section> <!-- end main -->
-
-         <!-- sidebar
-         ================================================== -->
-         <aside id="sidebar" class="grid3 add-margin-top">
-         <div class="fb-comments" data-href="{{ base_url }}" data-width="710px" data-numposts="5" data-colorscheme="light"></div>
-         </aside> <!-- end sidebar -->
-
-      </div>
+    <h1>{{ post.title }}</h1>
+    <p style="text-align: right"><a href="/archives">{{ post.category }}</a></p>
+    {{ content }}
+    <span>Tagged in </span>:{{ post.get_tags()|safe }} 
+    <br />
+    <br />
+    <p>
+        {% if next_post %}
+        <span>Next : <a href="{{ next_post.get_addr() }}">{{ next_post.title }}</a></span>
+        {% endif %}
+        {% if pre_post %}
+         <span>Previous : <a href="{{ pre_post.get_addr() }}">{{ pre_post.title }}</a></span></br>
+        {% endif %}
+    </p>
+    <p>
+        <div class="fb-comments" data-href="{{ base_url }}" data-width="710px" data-numposts="5" data-colorscheme="light"></div>
+    </p>
 {% endblock %}
