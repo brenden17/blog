@@ -1,19 +1,19 @@
 {% extends "base.html" %}
 {% block content %}
     <h1>All Page</h1>
-    <h2>Blog</h2>
+    <h2 id="blog">Blog</h2>
     <ol>
     {% for post in blogs %}
         <li>{{ post.date.strftime('%Y %b-%d') }} <a href="{{ post.get_addr() }}">{{ post.title }}</a> | tags : {{ post.get_tags()|safe }} </li>
     {% endfor %}
     </ol>
-    <h2>Work</h2>
+    <h2 id="work">Work</h2>
     <ol>
         {% for post in works %}
         <li>{{ post.date.strftime('%Y %b-%d') }} <a href="{{ post.get_addr() }}">{{ post.title }}</a> | tags : {{ post.get_tags()|safe }} </li>
         {% endfor %}
     </ol>
-    <h2>Book</h2>
+    <h2 id="book">Book</h2>
     <ol>
         {% for post in books %}
         <li>{{ post.date.strftime('%Y %b-%d') }} <a href="{{ post.get_addr() }}">{{ post.title }}</a> | tags : {{ post.get_tags()|safe }} </li>

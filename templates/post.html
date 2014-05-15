@@ -15,13 +15,12 @@
 {% endblock %}
 {% block content %}
     <h1>{{ post.title }}</h1>
-    <p style="text-align: right">Category : <a href="/archives">{{ post.category }}</a> &nbsp;&nbsp;
-    Tags : {{ post.get_tags()|safe }} &nbsp;&nbsp; 
-    {{ post.date.strftime('%Y-%m-%d') }}
+    <p style="text-align: right">Category : <a href="/archives#{{ post.category }}">{{ post.category }}</a> &nbsp;&nbsp;
+    Tagged in {{ post.get_tags()|safe }} &nbsp;&nbsp; 
+    {{ post.date.strftime('%Y %b-%d') }}
     </p>
     {{ toc }}
     {{ content }}
-    Tagged in {{ post.get_tags()|safe }}
     <br />
     <br />
     <p> Category : <a href="/archives">{{ post.category }}</a>

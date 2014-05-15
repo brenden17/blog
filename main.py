@@ -17,9 +17,9 @@ def md2html(content):
     toc = Markup(md.toc)
     return html_content, toc
 
-def post(post_id=None, category=None):
-    if post_id:
-        post = Post.get_by_id(post_id)
+def post(title=None, category=None):
+    if title:
+        post = Post.query(Post.title==title).get()
     else:
         post = Post.get_1lastest(category=category)
 
@@ -36,24 +36,24 @@ def post(post_id=None, category=None):
 
 @app.route('/')
 @app.route('/page/')
-@app.route('/page/<int:post_id>')
-def index(post_id=None):
-    return post(post_id)
+@app.route('/page/<title>')
+def index(title=None):
+    return post(title)
 
 @app.route('/blog/')
-@app.route('/blog/<int:post_id>')
-def blog(post_id=None):
-    return post(post_id, category='blog')
+@app.route('/blog/<title>')
+def blog(title=None):
+    return post(title, category='blog')
 
 @app.route('/work/')
-@app.route('/work/<int:post_id>')
-def page(post_id=None):
-    return post(post_id, category='work')
+@app.route('/work/<title>')
+def page(title=None):
+    return post(title, category='work')
 
 @app.route('/book/')
-@app.route('/book/<int:post_id>')
-def book(post_id=None):
-    return post(post_id, category='book')
+@app.route('/book/<title>')
+def book(title=None):
+    return post(title, category='book')
 
 @app.route('/tags/<tag>')
 def tags(tag):

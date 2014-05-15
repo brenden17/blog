@@ -49,10 +49,10 @@ class Post(ndb.Model):
         return self.get_post(pre=False, category=category)
     
     def get_addr(self, category=None):
-        if category == 'page':
-            return '/%s/%d' % ('page', self.key.id())
+        if category == 'page' or category == None:
+            return '/%s/%s' % ('page', self.title)
         else:
-            return '/%s/%d' % (self.category, self.key.id())
+            return '/%s/%s' % (self.category, self.title)
 
     @classmethod
     def get_tagged_post(cls, tag):
