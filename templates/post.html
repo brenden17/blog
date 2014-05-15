@@ -1,4 +1,4 @@
-{% extends "base_.html" %}
+{% extends "base.html" %}
 {% block javascript %}
 <link rel="stylesheet" href="/static/css/default.css">
 <script src="/static/js/highlight.pack.js"></script>
@@ -15,20 +15,24 @@
 {% endblock %}
 {% block content %}
     <h1>{{ post.title }}</h1>
-    <p style="text-align: right"><a href="/archives">{{ post.category }}</a></p>
+    <p style="text-align: right">Category : <a href="/archives">{{ post.category }}</a> &nbsp;&nbsp;
+    Tags : {{ post.get_tags()|safe }} &nbsp;&nbsp; 
+    {{ post.date.strftime('%Y-%m-%d') }}
+    </p>
+    {{ toc }}
     {{ content }}
-    <span>Tagged in </span>:{{ post.get_tags()|safe }} 
+    Tagged in {{ post.get_tags()|safe }}
     <br />
     <br />
-    <p>
+    <p> Category : <a href="/archives">{{ post.category }}</a>
         {% if next_post %}
-        <span>Next : <a href="{{ next_post.get_addr() }}">{{ next_post.title }}</a></span>
+        Next : <a href="{{ next_post.get_addr(category) }}">{{ next_post.title }}</a>
         {% endif %}
         {% if pre_post %}
-         <span>Previous : <a href="{{ pre_post.get_addr() }}">{{ pre_post.title }}</a></span></br>
+        Previous : <a href="{{ pre_post.get_addr(category) }}">{{ pre_post.title }}</a>
         {% endif %}
     </p>
     <p>
-        <div class="fb-comments" data-href="{{ base_url }}" data-width="710px" data-numposts="5" data-colorscheme="light"></div>
+        <div class="fb-comments" data-href="http://www.freelunchplan.com{{ post.get_addr('page') }}" data-width="710px" data-numposts="5" data-colorscheme="light"></div>
     </p>
 {% endblock %}

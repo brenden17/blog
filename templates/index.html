@@ -1,17 +1,18 @@
-{% extends "base_.html" %}
+{% extends "base.html" %}
 {% block content %}
     <h1>{{ post.title }}</h1>
     <p style="text-align: right"><a href="/archives">{{ post.category }}</a></p>
+    {{ toc }}
     {{ content }}
-    <span>Tagged in </span>:{{ post.get_tags()|safe }} 
+    Tagged in {{ post.get_tags()|safe }} 
     <br />
     <br />
     <p>
         {% if pre_post %}
-         <span>Previous : <a href="{{ pre_post.get_addr() }}">{{ pre_post.title }}</a></span></br>
+         <span>Previous : <a href="{{ pre_post.get_page_addr() }}">{{ pre_post.title }}</a></span></br>
         {% endif %}
         {% if next_post %}
-        <span>Next : <a href="{{ next_post.get_addr() }}">{{ next_post.title }}</a></span>
+        <span>Next : <a href="{{ next_post.get_page_addr() }}">{{ next_post.title }}</a></span>
         {% endif %}
     </p>
 

@@ -1,8 +1,10 @@
+import logging
+
 from google.appengine.ext import ndb
 
-
-BLOG = 'blog'
 PAGE = 'page'
+BLOG = 'blog'
+WORK = 'work'
 BOOK = 'book'
 
 
@@ -29,7 +31,11 @@ class Post(ndb.Model):
 
 
     def get_post(self, pre=True, category=None):
-        posts = Post.query().filter(Post.category==category)
+        if category:
+            posts = Post.query().filter(Post.category==category)
+        else:
+            posts = Post.query()
+            
         if pre:
             posts = posts.filter(Post.date < self.date).order(-Post.date).fetch(1)
         else:
@@ -42,8 +48,11 @@ class Post(ndb.Model):
     def get_next(self, category=None):
         return self.get_post(pre=False, category=category)
     
-    def get_addr(self):
-        return '/%s/%d' % (self.category, self.key.id())
+    def get_addr(self, category=None):
+        if category == 'page':
+            return '/%s/%d' % ('page', self.key.id())
+        else:
+            return '/%s/%d' % (self.category, self.key.id())
 
     @classmethod
     def get_tagged_post(cls, tag):

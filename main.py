@@ -1,3 +1,5 @@
+import logging
+
 from flask import Flask
 from flask import render_template
 from flask import request
@@ -10,16 +12,11 @@ from models import Post
 app = Flask(__name__.split('.')[0])
 
 def md2html(content):
-    return Markup(markdown.markdown(content))
+    md = markdown.Markdown(extensions=['toc'])
+    html_content = Markup(md.convert(content))
+    toc = Markup(md.toc)
+    return html_content, toc
 
-@app.route('/')
-def index():
-    post = Post.get_1lastest()
-    content = md2html(post.content)
-    return render_template('index.html',
-                           post=post,
-                           content=content)
-    
 def post(post_id=None, category=None):
     if post_id:
         post = Post.get_by_id(post_id)
@@ -28,23 +25,30 @@ def post(post_id=None, category=None):
 
     pre_post = post.get_pre(category=category)
     next_post = post.get_next(category=category)
-    content = md2html(post.content)
+    content, toc = md2html(post.content)
     return render_template('post.html',
                            post=post,
+                           category=category,
                            pre_post=pre_post,
                            next_post=next_post,
-                           content=content,
-                           base_url=request.base_url)
+                           toc=toc,
+                           content=content)
+
+@app.route('/')
+@app.route('/page/')
+@app.route('/page/<int:post_id>')
+def index(post_id=None):
+    return post(post_id)
 
 @app.route('/blog/')
 @app.route('/blog/<int:post_id>')
 def blog(post_id=None):
     return post(post_id, category='blog')
 
-@app.route('/page/')
-@app.route('/page/<int:post_id>')
+@app.route('/work/')
+@app.route('/work/<int:post_id>')
 def page(post_id=None):
-    return post(post_id, category='page')
+    return post(post_id, category='work')
 
 @app.route('/book/')
 @app.route('/book/<int:post_id>')
@@ -59,11 +63,11 @@ def tags(tag):
 @app.route('/archives')
 def archives():
     blogs = Post.get_lastest(count=999, category='blog')
-    pages = Post.get_lastest(count=999, category='page')
+    works = Post.get_lastest(count=999, category='work')
     books = Post.get_lastest(count=999, category='book')
     return render_template('archives.html',
                            blogs=blogs,
-                           pages=pages,
+                           works=works,
                            books=books)
 
 @app.route('/about')

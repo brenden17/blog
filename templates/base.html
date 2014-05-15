@@ -1,89 +1,24 @@
 <!DOCTYPE html>
-<!--[if lt IE 8 ]><html class="ie ie7" lang="en"> <![endif]-->
-<!--[if IE 8 ]><html class="ie ie8" lang="en"> <![endif]-->
-<!--[if (gte IE 8)|!(IE)]><!--><html lang="en"> <!--<![endif]-->
-
+<html>
 <head>
-
-   <!--- Basic Page Needs
-   ================================================== -->
-	<meta charset="utf-8">
-	<title>Free Lunch Plan</title>
-	<meta name="description" content="">
-	<meta name="author" content="">
-
-	<!-- CSS
-   ================================================== -->
-	<link rel="stylesheet" href="/static/css/base.css">
-	<link rel="stylesheet" href="/static/css/layout.css">
+	<meta name="viewport" content="width=device-width" />
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>free lunch plan</title>
 	<link rel="shortcut icon" href="/static/images/favicon.ico" type="image/x-icon">
-
-	<!--[if lt IE 9]>
-		<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-	<![endif]-->
-
+	<link rel="stylesheet" href="/static/css/install.css?ver=20100228" type="text/css" />
+	{% block javascript %}
+	{% endblock %}
 </head>
-
 <body>
+<p style="text-align: center">
+    <a href="/page">Page</a>&nbsp;&nbsp; :: &nbsp;&nbsp;
+    <a href="/work">Work</a>&nbsp;&nbsp;&nbsp;
+    <a href="/blog">Blog</a>&nbsp;&nbsp;&nbsp;
+    <a href="/book">Book</a>&nbsp;&nbsp;&nbsp;
+    <a href="/archives">Archives</a>&nbsp;&nbsp;&nbsp;
+    <a href="/about">About</a>
+</p>
 
-   <div id="content-wrap">
-
-      <!-- Header
-      ================================================== -->
-      <header class="container">
-            <h1><a href="/">Free Lunch Plan</a></h1>
-            <h3>공짜 점심 만들기 기획</h3>
-
-         <nav id="nav-wrap" class="cf">
-
-            <ul id="menu">
-		        <li {% block icurrent %}{% endblock %}><a href="/">Home</a></li>
-	            <li {% block pcurrent %}{% endblock %}><a href="/blog">Blog</a></li>
-	            <li {% block arcurrent %}{% endblock %}><a href="/page">Page</a></li>
-	            <li {% block aburrent %}{% endblock %}><a href="/about">About</a></li>
-	            <li {% block acurrent %}{% endblock %}><a href="/archives">Archives</a></li>
-            </ul> <!-- end #menu -->
-         </nav>
-
-      </header>
-      {% block content %}{% endblock %}
-      <!-- search section
-      ================================================== -->
-      <div id="search-section" class="container">
-         <form class="cf">
-
-            <div class="grid4 a-left first">
-               <label for="regularInput">Search the site</label>
-            </div>
-
-            <div class="grid8 a-right">
-               <input type="text" id="regularInput">
-               <button type="submit">GO</button>
-            </div>
-
-         </form>
-      </div>
-
-   </div> <!-- end content-wrap -->
-
-   <!-- footer
-   ================================================== -->
-   <footer class="container">
-       <aside class="pull-quote">
-             <blockquote>
-             <p>Most people are about as happy as they make up their minds to be. (대부분의 사람은 마음먹은 만큼 행복하다.) </p>
-             <cite>Abraham Lincoln</cite>
-             </blockquote>
-       </aside>
-   </footer>
-
-   <!-- Java Script
-   ================================================== -->
-   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-   <script>window.jQuery || document.write('<script src="js/jquery-1.10.2.min.js"><\/script>')</script>
-
-   {% block javascript %}{% endblock %}
-
+{% block content %}{% endblock %}
 </body>
-
 </html>
