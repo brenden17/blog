@@ -1,4 +1,4 @@
-a
+work
 python으로 pig의 UDF 만들기
 hadoop, pig, udf
 pig을 가지고 놀다 보면 어떻게 데이터를 처리할 수 있을까하는 생각이 든다.

@@ -1,4 +1,4 @@
-a
+work
 파이썬 한국어 형태소 분석기
 python, hannanum, pos, tagger
 자연어 처리를 하고자 할 때, 때때로 형태소 분석기가 필요하다.

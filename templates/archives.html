@@ -1,22 +1,15 @@
 {% extends "base.html" %}
 {% block content %}
-    <h1>All Page</h1>
-    <h2 id="blog">Blog</h2>
+<h1>모든 페이지</h1>
+
+<ol>
+{% for entity in entities %}
+    <li><a href="{{ entity.get_addr() }}">{{ entity.name }}</a></li>
     <ol>
-    {% for post in blogs %}
-        <li>{{ post.date.strftime('%Y %b-%d') }} <a href="{{ post.get_addr() }}">{{ post.title }}</a> | tags : {{ post.get_tags()|safe }} </li>
+    {% for post in entity.get_post() %}
+    <li>{{ post.date.strftime('%Y %b-%d') }} <a href="{{ post.get_addr() }}">{{ post.title }}</a> | tags : {{ post.get_tags()|safe }} </li>
     {% endfor %}
     </ol>
-    <h2 id="work">Work</h2>
-    <ol>
-        {% for post in works %}
-        <li>{{ post.date.strftime('%Y %b-%d') }} <a href="{{ post.get_addr() }}">{{ post.title }}</a> | tags : {{ post.get_tags()|safe }} </li>
-        {% endfor %}
-    </ol>
-    <h2 id="book">Book</h2>
-    <ol>
-        {% for post in books %}
-        <li>{{ post.date.strftime('%Y %b-%d') }} <a href="{{ post.get_addr() }}">{{ post.title }}</a> | tags : {{ post.get_tags()|safe }} </li>
-        {% endfor %}
-    </ol>
+{% endfor %}
+</ol>
 {% endblock %}

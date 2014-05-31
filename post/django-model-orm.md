@@ -1,4 +1,4 @@
-a
+work
 Django의 model를 standalone으로 사용하기
 django, model
 장고(Django)의 여러 장점중 가장 좋아하는 장점은 모델 부분이다.

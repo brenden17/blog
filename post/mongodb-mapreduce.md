@@ -1,18 +1,14 @@
-a
+work
 Simple toy with Mongodb map-reduce
 mongodb, mapreduce
 Suppose that I have my own business which is so small but deals with big money. I have been writing down financial book by myself since Jaunary of 2011. Today I want to know the months expension between 2011 and 2012.
 
-
 Requiremnts
 
-    mongodb
-    mongoengine
-
+ * mongodb
+ * mongoengine
 
 Firstly, I make dummy(fake) data with mongoengine. The schema(Class) is so simple. The data is generated randomly.
-
-
 
     class DailyBalance(me.Document):
         dayat = me.DateTimeField(default=datetime.now)
@@ -21,7 +17,6 @@ Firstly, I make dummy(fake) data with mongoengine. The schema(Class) is so simpl
 
 
 You would have over 30 document after running python code. Then you need to create map and reduce code on mongo. Before that, you can check some commands on mongo.
-
 
     $mongo
     >show dbs

@@ -1,4 +1,4 @@
-a
+work
 If you ask, inspect module can answer
 python
 When you get an object, you might wonder what it is. First off, you can ask whether isfunction or isclass. If it is function, what are arguments? 

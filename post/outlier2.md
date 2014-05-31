@@ -1,12 +1,12 @@
-a
+work
 Detecting Outlier-2
 sklearn, pandas, outlier
 
-[Detecting Outlier-1](5113880120393728)에서 구별한 novelty와 outlier를 간략하게 다시 보면
+[Detecting Outlier-1](/page/Detecting Outlier-1)에서 구별한 novelty와 outlier를 간략하게 다시 보면
 novelty deteciton는 unsupervised 학습 방법이며, 훈련 데이터에 이상치는 없는 반면, 
 outlier detecion은 훈련 데이터에 이상치가 포함되어 있다.
-novelty deteciton의 대표적인 방법은 [One class SVM]()이다.
-outlier detecion의 대표적인 방법은 [Elliptic evnvelop]()이다.
+novelty deteciton의 대표적인 방법은 [One class SVM](http://scikit-learn.org/stable/modules/generated/sklearn.svm.OneClassSVM.html)이다.
+outlier detecion의 대표적인 방법은 [Elliptic evnvelop](http://scikit-learn.org/stable/modules/generated/sklearn.covariance.EllipticEnvelope.html)이다.
 
 sklearn에서는 novelty와 outlier을 검출하는 기계 학습 도구를 제공한다.
 공통적으로 다음과 같이 사용한다.
@@ -22,8 +22,4 @@ robust esitmator 방법인 Elliptic envelop을 사용한다.
 * 다변량 - 마할로노비스을 사용하여 표본을 찾는다.
 
 One Class SVM은 classification, regression에 사용하는 SVM의 한 분야이다. 다른 SVM 기법과 마찬가지로,
-커널 함수와 마진(margin)을 매개 변수로 정의 할 수 있다. 
-
-Elliptic envelop 
-
-     
+커널 함수와 마진(margin)을 매개 변수로 정의 할 수 있다.

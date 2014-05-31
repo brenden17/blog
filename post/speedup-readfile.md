@@ -1,4 +1,4 @@
-a
+work
 Speed up with readlines
 python
 You might get the idea as you compare between readline and readlines. 

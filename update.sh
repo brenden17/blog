@@ -1,2 +1,2 @@
 #! /bin/bash
-python ~/tmp/google_appengine/appcfg.py update ../blog
+python /media/riemann/tmp/google_appengine/appcfg.py update ../blog

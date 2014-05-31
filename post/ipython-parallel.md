@@ -1,4 +1,4 @@
-a
+work
 IPython 병렬처리로 sklearn의 GridSearch를 만들기
 ipython, sklearn
 sklearn을 사용할 때, 실험 데이터가 커지거나 특히, 적용해 보고자 하는 파라미터가 많을 때 시간이 많이 걸린다.

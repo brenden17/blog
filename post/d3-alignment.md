@@ -1,6 +1,6 @@
-page
+work
 D3.js을 활용하여 서열 그리기
-flask biopython d3.js
+flask, biopython, d3.js, javascript 
 # D3.js을 활용하여 서열 그리기
 [D3.js](http://d3js.org/)(Data-Driven Documents)는 웹브라우저에서 데이터를 효과적으로 표현하고 사용자와 상호작용할 수 있도록 개발된 자바스크립트 라이브러리이다. 2011년부터 개발을 시작하여 2014년 4월에 3.4.6버전을 내놓았다.
 

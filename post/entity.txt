@@ -1,0 +1,10 @@
+book=||
+movie=||
+math=||
+python=computer language|numpy,sckit-learn,pandas,scikit|javascript
+scikit-learn=python,machine learning||numpy,pandas
+numpy=python||
+machine learning=ai||data mining
+amazon=book,company|aws,kindle|google
+aws=tech||gae
+google=company|gae|amazon

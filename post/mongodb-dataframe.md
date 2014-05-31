@@ -1,4 +1,4 @@
-a
+work
 mongodb 데이터를 pandas 데이터로 변환하기
 mongodb, pandas
 mongodb를 사용하다 보면 pandas로 바로 가져와 작업해 보고 싶다는 생각이 가끔 들때가 있다.

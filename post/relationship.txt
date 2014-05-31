@@ -1,0 +1,4 @@
+object=from|to|ref
+python=computer language | scikit-learn, numpy, pandas | java
+scikit-learn=python, machine learning||spark
+nlp

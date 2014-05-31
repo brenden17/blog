@@ -1,7 +1,7 @@
-a
+work
 Detecting Outlier-1
 sklearn, pandas, outlier, DBSCAN
-이상치 검출(Outlier detection)은 [imbalanced data](http://cohesive-beach-456.appspot.com/page/5144752345317376)와 매우 유사한 형태라고 할 수 있다.
+이상치 검출(Outlier detection)은 [imbalanced data](/page/imbalanced data 처리하기)와 매우 유사한 형태라고 할 수 있다.
 이상치는 대부분 데이터와 다른 형태를 띄고 있고 매우 소수이다.
 좀 더 살펴보기 전에 몇가지 정의를 보도록 하자.
 

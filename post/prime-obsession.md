@@ -1,5 +1,5 @@
-b
-Read a [Prime Obsession]
+book
+Prime Obsession
 english, math
 I had finished reading a [Prime Obsession](http://en.wikipedia.org/wiki/Prime_Obsession) which explains about Riemann hypothesis is 8th Hibert's problem.
 I bought this book around 4 years ago and then I tried to read it at that time but I gave up after reading a half of the book.

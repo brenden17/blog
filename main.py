@@ -1,18 +1,25 @@
 import logging
+import re
 
 from flask import Flask
-from flask import render_template
+from flask import render_template, redirect, url_for
 from flask import request
 from flask import Markup
 
 import markdown
 
-from models import Post
+from models import Post, Entity
 
 app = Flask(__name__.split('.')[0])
 
+def noTag(text, tag):
+    pattern = r"(<\s*%s\s*.*?>)|(<\s*/%s\s*>)" % (tag, tag)
+    pat = re.compile(pattern, re.IGNORECASE | re.DOTALL)
+    tagless = pat.sub('', text)
+    return tagless
+  
 def md2html(content):
-    md = markdown.Markdown(extensions=['toc'])
+    md = markdown.Markdown(extensions=['toc', 'def_list'])
     html_content = Markup(md.convert(content))
     toc = Markup(md.toc)
     return html_content, toc
@@ -26,6 +33,9 @@ def post(title=None, category=None):
     pre_post = post.get_pre(category=category)
     next_post = post.get_next(category=category)
     content, toc = md2html(post.content)
+    
+    txt = noTag(noTag(toc, 'div'), 'ul')
+    toc = toc if txt.strip() else ''
     return render_template('post.html',
                            post=post,
                            category=category,
@@ -40,35 +50,59 @@ def post(title=None, category=None):
 def index(title=None):
     return post(title)
 
-@app.route('/blog/')
-@app.route('/blog/<title>')
-def blog(title=None):
-    return post(title, category='blog')
+#@app.route('/blog/')
+#@app.route('/blog/<title>')
+#def blog(title=None):
+#    return post(title, category='blog')
+#
+#@app.route('/work/')
+#@app.route('/work/<title>')
+#def page(title=None):
+#    return post(title, category='work')
+#
+#@app.route('/book/')
+#@app.route('/book/<title>')
+#def book(title=None):
+#    return post(title, category='book')
 
-@app.route('/work/')
-@app.route('/work/<title>')
-def page(title=None):
-    return post(title, category='work')
+@app.route('/<noun>/')
+def entity(noun=None):
+    entity = Entity.query(Entity.name==noun).get()
+    post = Post.query(Post.title==noun).get()
+    if not post:
+        return redirect(url_for("idonotknow", noun=noun))
+    
+    posts = Post.query().filter(Post.category.IN([noun]))
+    content, toc = md2html(post.content)
+    
+    txt = noTag(noTag(toc, 'div'), 'ul')
+    toc = toc if txt.strip() else ''
 
-@app.route('/book/')
-@app.route('/book/<title>')
-def book(title=None):
-    return post(title, category='book')
+    return render_template('entity.html',
+                           entity=entity,
+                           post=post,
+                           posts=posts,
+                           toc=toc,
+                           content=content)
 
-@app.route('/tags/<tag>')
-def tags(tag):
-    posts = Post.get_tagged_post(tag)
-    return render_template('tags.html', posts=posts)
+@app.route('/<noun>/<verb>')
+def verb(noun=None, verb=None):
+    return post(verb, category=noun)
+
+@app.route('/idonotknow/<noun>')
+def idonotknow(noun):
+    posts = Post.query().filter(Post.category.IN([noun]))
+    tagged_posts = Post.get_tagged_post(noun)
+    return render_template('idonotknow.html',
+                           noun=noun,
+                           posts=posts,
+                           tagged_posts=tagged_posts)
 
 @app.route('/archives')
 def archives():
-    blogs = Post.get_lastest(count=999, category='blog')
-    works = Post.get_lastest(count=999, category='work')
-    books = Post.get_lastest(count=999, category='book')
+    entities = Entity.query()
     return render_template('archives.html',
-                           blogs=blogs,
-                           works=works,
-                           books=books)
+                           entities=entities)
 
 @app.route('/about')
 def about():
