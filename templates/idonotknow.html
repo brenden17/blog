@@ -4,19 +4,20 @@
 
 <div class="nav_info">
 <h2>아직 정의되지 않은 분류입니다.</h2>
+wikipedia : <a href="http://en.wikipedia.org/wiki/Special:Search?search={{ noun }}" target="_blank">{{ noun }}</a>
 </div>
 
 <h2>같은 분류 페이지</h2>
 
 <ol>
-{% for post in taged_posts %}
+{% for post in posts %}
   <li>{{ post.date.strftime('%Y %b-%d') }} <a href="{{ post.get_addr() }}">{{ post.title }}</a></li>
 {% endfor %}
 </ol>
 
 <h2>태깅된 페이지</h2>
 <ol>
-{% for post in taged_posts %}
+{% for post in tagged_posts %}
   <li>{{ post.date.strftime('%Y %b-%d') }} <a href="{{ post.get_addr() }}">{{ post.title }}</a></li>
 {% endfor %}
 </ol>

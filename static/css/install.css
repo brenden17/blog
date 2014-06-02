@@ -101,7 +101,7 @@ abbr {
     margin-left: 0 !important;
     padding: 5px 5px !important;
     board: 1px solid #88C7E0;
-    width: 450px;
+    width: 500px;
     border-color: #6699FF;
     border-style: ridge;
 }
@@ -118,7 +118,9 @@ abbr {
     margin-left: 0 !important;
     padding: 5px 5px !important;
     board: 1px solid FFFF66;
-    width: 600px;
+    width: 500px;
+    border-color: #FFCCFF;
+    border-style: ridge;
 }
 .step {
 	margin: 20px 0 15px;

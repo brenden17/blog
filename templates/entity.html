@@ -19,22 +19,25 @@
     {{ post.date.strftime('%Y %b-%d') }}
     </p>
     <div class="nav_info">
-    <h2>상위 페이지</h2>
-    <ul>
-	    {% for p in entity.from_entity %}
-	    <li><a href="/{{ p }}/">{{ p }}</a></li>
+	    <h2>상위 페이지</h2>
+	    <ul>
+		    {% for p in entity.from_entity %}
+		    <li><a href="/{{ p }}/">{{ p }}</a></li>
+		    {% endfor %}
+	    </ul>
+	    <h2>하위 페이지</h2>
+	    <ul>
+		    {% for c in entity.to_entity %}
+		    <li><a href="/{{ c }}/">{{ c }}</a></li>
+		    {% endfor %}
+	    </ul>
+	    <h2>참조 페이지</h2>
+	    <ul>
+	    {% for r in entity.ref_entity %}
+	        <li><a href="/{{ r }}/">{{ r }}</a></li>
 	    {% endfor %}
-    </ul>
-    <h2>하위 페이지</h2>
-    <ul>
-	    {% for c in entity.to_entity %}
-	    <li><a href="/{{ c }}/">{{ c }}</a></li>
-	    {% endfor %}
-    </ul>
-    <h2>참고 페이지</h2>
-    {% for r in entity.to_ref %}
-    <a href="/{{ r }}/">{{ r }}</a>
-    {% endfor %}
+	    </ul>
+	    wikipedia : <a href="http://en.wikipedia.org/wiki/Special:Search?search={{ post.title }}" target="_blank">{{ post.title }}</a>
     </div>
     
     {% if toc %}
@@ -42,10 +45,10 @@
     {% endif %}
     {{ content }}
 
-    <h1>관련 페이지</h1>
+    <h2>관련 페이지</h2>
     <ul>
-    {% for post in posts %}
-    <li><a href="/{{ entity.name }}/{{ post.title }}">{{ post.title }}</a></li>
+    {% for p in posts %}
+    <li><a href="/{{ post.title }}/{{ p.title }}">{{ p.title }}</a></li>
     {% endfor %} 
     </ul>
     </div>

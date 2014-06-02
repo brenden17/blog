@@ -2,17 +2,18 @@ import logging
 
 from google.appengine.ext import ndb
 
-PAGE = 'page'
-BLOG = 'blog'
-WORK = 'work'
-BOOK = 'book'
-
+def strip(l):
+        return [] if len(l) == 1 and l[0]=='' else l
+    
 class DisplayerMixin(object):
+        
     def get_tags(self):
-        return ', '.join(['<a href="/%s">%s</a>' % (tag, tag) for tag in self.tags])
+        return ', '.join(['<a href="/%s">%s</a>' % 
+                          (t, t) for t in strip(self.tags)])
 
     def get_categorys(self):
-        return ', '.join(['<a href="/%s">%s</a>' % (c, c) for c in self.category])
+        return', '.join(['<a href="/%s">%s</a>' % 
+                         (c, c) for c in strip(self.category)])
 
 class Post(ndb.Model, DisplayerMixin):
     category = ndb.StringProperty(repeated=True)

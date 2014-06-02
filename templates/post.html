@@ -34,6 +34,7 @@ Tagged in {{ post.get_tags()|safe }} &nbsp;&nbsp;
 {{ content }}
 <br />
 <br />
+
 <p>
 {% if post.get_categorys() %}
 Category : {{ post.get_categorys()|safe }}<br />
@@ -49,13 +50,11 @@ Previous : <a href="{{ pre_post.get_addr(category) }}">{{ pre_post.title }}</a>
 {% if post.suggest %}
 <div id="suggest">
 <h2>Similar Pages</h2>
-<p>
 	<ul>
 	{% for suggest in post.suggest %}
 	<li><a href="/page/{{ suggest }}">{{ suggest }}</a></li>
 	{% endfor %} 
 	</ul>
-	</p>
 </div>
 {% endif %}
 

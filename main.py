@@ -50,21 +50,6 @@ def post(title=None, category=None):
 def index(title=None):
     return post(title)
 
-#@app.route('/blog/')
-#@app.route('/blog/<title>')
-#def blog(title=None):
-#    return post(title, category='blog')
-#
-#@app.route('/work/')
-#@app.route('/work/<title>')
-#def page(title=None):
-#    return post(title, category='work')
-#
-#@app.route('/book/')
-#@app.route('/book/<title>')
-#def book(title=None):
-#    return post(title, category='book')
-
 @app.route('/<noun>/')
 def entity(noun=None):
     entity = Entity.query(Entity.name==noun).get()
@@ -100,7 +85,7 @@ def idonotknow(noun):
 
 @app.route('/archives')
 def archives():
-    entities = Entity.query()
+    entities = Entity.query().order(Entity.name)
     return render_template('archives.html',
                            entities=entities)
 
