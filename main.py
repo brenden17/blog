@@ -89,6 +89,15 @@ def archives():
     return render_template('archives.html',
                            entities=entities)
 
+@app.route('/network')
+def network():
+    entities = Entity.query().order(Entity.name)
+    result = list()
+    for e in entities:
+        result.extend(e.get_json())
+    return render_template('network.html',
+                           result=result)
+    
 @app.route('/about')
 def about():
     return render_template('about.html')
