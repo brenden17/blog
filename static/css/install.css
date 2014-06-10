@@ -96,14 +96,12 @@ abbr {
 }
 
 .toc {
-    background: none repeat scroll 0 0 #F4F7F8;
-    font-size: 12px !important;
+    background: none repeat scroll 0 0 #F5F7FA;
+    border: 1px solid #DADEE3;
     margin-left: 0 !important;
     padding: 5px 5px !important;
     board: 1px solid #88C7E0;
     width: 500px;
-    border-color: #6699FF;
-    border-style: ridge;
 }
 .suggest {
     background: none repeat scroll 0 0 #F4F7F8;
@@ -120,7 +118,6 @@ abbr {
     board: 1px solid FFFF66;
     width: 500px;
     border-color: #FFCCFF;
-    border-style: ridge;
 }
 .step {
 	margin: 20px 0 15px;
