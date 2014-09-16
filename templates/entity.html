@@ -19,19 +19,19 @@
     {{ post.date.strftime('%Y %b-%d') }}
     </p>
     <div class="nav_info">
-	    <h2>상위 페이지</h2>
+	    <h2>상위 올림말 페이지</h2>
 	    <ul>
 		    {% for p in entity.from_entity %}
 		    <li><a href="/{{ p }}/">{{ p }}</a></li>
 		    {% endfor %}
 	    </ul>
-	    <h2>하위 페이지</h2>
+	    <h2>하위 올림말 페이지</h2>
 	    <ul>
 		    {% for c in entity.to_entity %}
 		    <li><a href="/{{ c }}/">{{ c }}</a></li>
 		    {% endfor %}
 	    </ul>
-	    <h2>참조 페이지</h2>
+	    <h2>관련 올림말 페이지</h2>
 	    <ul>
 	    {% for r in entity.ref_entity %}
 	        <li><a href="/{{ r }}/">{{ r }}</a></li>
@@ -39,7 +39,8 @@
 	    </ul>
 	    wikipedia : <a href="http://en.wikipedia.org/wiki/Special:Search?search={{ post.title }}" target="_blank">{{ post.title }}</a>
     </div>
-    
+    <br />
+    <br />
     {% if toc %}
     {{ toc }}
     {% endif %}
@@ -52,7 +53,4 @@
     {% endfor %} 
     </ul>
     </div>
-    <p>
-        <div class="fb-comments" data-href="http://www.freelunchplan.com{{ post.get_addr('page') }}" data-width="710px" data-numposts="5" data-colorscheme="light"></div>
-    </p>
 {% endblock %}

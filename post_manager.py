@@ -1,3 +1,4 @@
+from __future__ import division
 from glob import glob
 from string import strip
 
@@ -19,7 +20,7 @@ def set_postid(filename, postid):
     with open(POSTBIFILE, 'a') as f:
         f.write('{0},{1}\n'.format(filename.strip(), postid))
 
-def create_post(filename, post_base_dir='./post/'):
+def update_post(filename, post_base_dir='./post/'):
     filename = post_base_dir + filename
     with open(filename) as f:
         txt = f.readlines()
@@ -50,7 +51,7 @@ def create_post(filename, post_base_dir='./post/'):
         post.put()
         print 'Existed post saved'
 
-def update_post():
+def update_all_post():
     dir_name = './post/*.md'
     files = glob(dir_name)
     for f in files:
@@ -175,6 +176,7 @@ class Tree(object):
                         n = self.get_or_create(n)
             return all_nodes
 
+## update entity
 def update_entity():
     tree = Tree()
     all_nodes = tree.build('./post/entity.txt', False)
@@ -198,11 +200,11 @@ def update_entity():
                    ref_entity=node.get_ref(),
                    ).put()
 
+## check category similarity
 def tanimoto(s1, s2):
     c = len(set(s1)&set(s2))
-    if len(s1) + len(s2) - c ==0:
-        return 0
-    return float(c) / (len(s1) + len(s2) - c)
+    g = len(s1) + len(s2) - c
+    return c/g if g else 0 
 
 def calculate(n1, n2, w, sf=tanimoto):
     print n1, n1.get_ancestor_depth()

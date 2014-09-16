@@ -5,6 +5,8 @@ ai, machine learning
 아마존, 세상의 모든 것을 팝니다, The Everything Store
 :   1판 3쇄 2014년 4월 10일
 
+![alt text](http://book.daum-img.net/R110x160/KOR9788950952952?moddttm=20140701065930 "amazon book")
+
 # 서문
 
 > 직원들은 자신이 발표할 내용을 여섯 페이지짜리 산문 형식으로 써야 한다. 17쪽

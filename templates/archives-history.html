@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>시간순 모든 페이지</h1>
+
+<ol>
+{% for post in posts %}
+    <li>{{ post.date.strftime('%Y %b-%d') }} <a href="{{ post.get_addr() }}">{{ post.title }}</a> | tags : {{ post.get_tags()|safe }} </li>
+{% endfor %}
+</ol>
+
+{% endblock %}

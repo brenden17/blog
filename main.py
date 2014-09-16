@@ -76,7 +76,7 @@ def verb(noun=None, verb=None):
 
 @app.route('/idonotknow/<noun>')
 def idonotknow(noun):
-    posts = Post.query().filter(Post.category.IN([noun]))
+    posts = Post.query().filter(Post.category.IN([noun])).order(-Post.date)
     tagged_posts = Post.get_tagged_post(noun)
     return render_template('idonotknow.html',
                            noun=noun,
@@ -88,6 +88,12 @@ def archives():
     entities = Entity.query().order(Entity.name)
     return render_template('archives.html',
                            entities=entities)
+
+@app.route('/history')
+def hisotry():
+    posts = Post.query().order(-Post.date)
+    return render_template('archives-history.html',
+                           posts=posts)
 
 @app.route('/network')
 def network():

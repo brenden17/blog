@@ -72,7 +72,8 @@ class Entity(ndb.Model):
         return '/%s' % (self.name)
 
     def get_post(self):
-        return Post.query().filter(Post.category.IN([self.name]))
+        return Post.query().filter(ndb.OR(Post.category.IN([self.name]),
+                            Post.tags.IN([self.name])))
 
     def get_json(self):
         entity_json = list()

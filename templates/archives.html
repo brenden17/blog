@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% block content %}
-<h1>분류된 모든 페이지</h1>
-
+<h1>올림말로 분류한 모든 페이지</h1>
+<a href="/history">All pages by date</a>&nbsp;&nbsp;&nbsp;
 <ol>
 {% for entity in entities %}
     <li><a href="{{ entity.get_addr() }}">{{ entity.name }}</a></li>

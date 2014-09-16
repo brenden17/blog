@@ -20,10 +20,10 @@
 
 <p style="text-align: right">
 {% if post.get_categorys() %}
-Category : {{ post.get_categorys()|safe }} &nbsp;&nbsp;
+분류 : {{ post.get_categorys()|safe }} &nbsp;&nbsp;
 {% endif %}
 {% if post.get_tags() %}
-Tagged in {{ post.get_tags()|safe }} &nbsp;&nbsp; 
+꼬리표 : {{ post.get_tags()|safe }} &nbsp;&nbsp; 
 {% endif %}
 {{ post.date.strftime('%Y %b-%d') }}
 </p>
@@ -37,19 +37,19 @@ Tagged in {{ post.get_tags()|safe }} &nbsp;&nbsp;
 
 <p>
 {% if post.get_categorys() %}
-Category : {{ post.get_categorys()|safe }}<br />
+분류 : {{ post.get_categorys()|safe }}<br />
 {% endif %}
 {% if next_post %}
-Next : <a href="{{ next_post.get_addr(category) }}">{{ next_post.title }}</a>
+다음 : <a href="{{ next_post.get_addr(category) }}">{{ next_post.title }}</a>&nbsp;&nbsp;
 {% endif %}
 {% if pre_post %}
-Previous : <a href="{{ pre_post.get_addr(category) }}">{{ pre_post.title }}</a>
+이전 : <a href="{{ pre_post.get_addr(category) }}">{{ pre_post.title }}</a>
 {% endif %}
 </p>
 
 {% if post.suggest %}
 <div id="suggest">
-<h2>Similar Pages</h2>
+<h2>유사한 페이지</h2>
 	<ul>
 	{% for suggest in post.suggest %}
 	<li><a href="/page/{{ suggest }}">{{ suggest }}</a></li>

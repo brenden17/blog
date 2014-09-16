@@ -1,6 +1,9 @@
-book, machine learning
+book, machine learning, brain
 On Intelligence
 ai
+
+![alt text](http://book.daum-img.net/R110x160/ENG9780805078534?moddttm=20140604070550 "on intelligence")
+
 기계 학습 관련 블로그를 읽다, 자주 이 책이 언급되는 것을 기억하고 확률 관련 책을 사려하다 급선회하여
 [On Intelligence](http://www.yes24.com/24/goods/3794199?scode=032&OzSrank=5)을 샀다.
 
