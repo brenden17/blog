@@ -25,7 +25,7 @@ def update_post(filename, post_base_dir='./post/'):
     with open(filename) as f:
         txt = f.readlines()
         category = map(strip, txt[0].strip().split(','))
-        title = txt[1].strip()
+        title = txt[1].strip().replace(' ', '-')
         tags = map(strip, txt[2].strip().split(','))
         content = ''.join(txt[3:])
 
@@ -52,10 +52,11 @@ def update_post(filename, post_base_dir='./post/'):
         print 'Existed post saved'
 
 def update_all_post():
-    dir_name = './post/*.md'
+    dir_name = './post/*.v.md'
     files = glob(dir_name)
     for f in files:
-        create_post(f, '')
+        print f
+        update_post(f, '')
 
 class Node(object):
     def __init__(self, entity=''):

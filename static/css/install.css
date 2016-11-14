@@ -3,16 +3,16 @@ html {
 	margin: 0 20px;
 }
 
-body {
+/*body {
 	background: #fff;
 	color: #444;
 	font-family: "NanumGothic","Malgun Gothic","Helvetica Neue",Helvetica,Arial,sans-serif;
-	margin: 140px auto 25px;
+	margin: 60px auto 25px;
 	padding: 0px 20px 10px 20px;
 	max-width: 700px;
 	-webkit-font-smoothing: subpixel-antialiased;
 	-webkit-box-shadow: 0 1px 3px rgba(0,0,0,0.13);
-}
+}*/
 
 a {
 	color: #0074a2;
@@ -300,7 +300,7 @@ body.rtl,
 
 @media only screen and (max-width: 799px) {
 	body {
-		margin-top: 115px;
+		margin-top: 15px;
 	}
 	#logo a {
 		margin: -125px auto 30px;
@@ -351,4 +351,8 @@ body.rtl,
 		box-sizing: border-box;
 	}
 
+}
+
+#search {
+	margin: 10px 170px 20px;
 }

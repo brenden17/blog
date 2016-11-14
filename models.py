@@ -62,6 +62,14 @@ class Post(ndb.Model, DisplayerMixin):
     def get_addr(self, category=None):
         return '/%s/%s' % ('page', self.title)
 
+    def get_json(self):
+        return {
+            'category': ','.join(self.category),
+            'title':self.title,
+            'date':self.date.strftime('%m/%b/%Y'),
+            'tags':','.join(self.tags)
+        }
+
 class Entity(ndb.Model):
     name = ndb.StringProperty(required=True)
     from_entity = ndb.StringProperty(repeated=True)

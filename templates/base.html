@@ -1,23 +1,139 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-	<meta name="viewport" content="width=device-width" />
-	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	<title>free lunch plan</title>
-	<link rel="shortcut icon" href="/static/images/favicon.ico" type="image/x-icon">
-	<link rel="stylesheet" href="/static/css/install.css?ver=20100228" type="text/css" />
-	{% block javascript %}
-	{% endblock %}
+  <title>{% block title %} {% endblock %}</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+  <link rel="shortcut icon" href="/static/images/favicon.ico" type="image/x-icon">
+  <link rel="stylesheet" href="/static/css/install.css?ver=20100228" type="text/css" />
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
+  <style>
+    /* Remove the navbar's default margin-bottom and rounded borders */ 
+    .navbar {
+      margin: 30px 100px 30px 20px;
+      border-radius: 0;
+      background-color: white;
+      border-color: white;
+    }
+    
+    /* Set height of the grid so .sidenav can be 100% (adjust as needed) */
+    /*.row.content {height: 450px}*/
+    
+    /* Set gray background color and 100% height */
+    .sidenav {
+      padding-top: 20px;
+      background-color: white;
+      height: 100%;
+    }
+
+    /* Set black background color, white text and some padding */
+    footer {
+      background-color: white;
+      color: white;
+      padding: 15px;
+    }
+    
+    /* On small screens, set height to 'auto' for sidenav and grid */
+    @media screen and (max-width: 767px) {
+      .sidenav {
+        height: auto;
+        padding: 0px;
+      }
+      .row.content {height:auto;} 
+    }
+
+    .info {
+      background-color: white;
+      padding: 70px 15px 0 15px;
+    }
+  {% block javascript %}
+  {% endblock %}
+
+  </style>
+
 </head>
 <body>
-<nav style="text-align: center">
-    <a href="/">Page</a>&nbsp;&nbsp; :: &nbsp;&nbsp;
-    <a href="/blog">Blog</a>&nbsp;&nbsp;&nbsp;
-    <a href="/archives">Archives</a>&nbsp;&nbsp;&nbsp;
-    <a href="/network">Network</a>&nbsp;&nbsp;&nbsp;
-    <a href="/about">About</a>
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-72209344-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>                        
+      </button>
+      <a class="navbar-brand" href="#"></a>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="/">Page</a></li>
+        <li><a href="/blog">Blog</a></li>
+        <li><a href="/archives">Archives</a></li>
+        <li><a href="/network">Network</a></li>
+        <li><a href="/about">About</a></li>
+        <li>  </li>
+      </ul>
+    </div>
+  </div>
 </nav>
 
-{% block content %}{% endblock %}
+<div class="container-fluid text-center">    
+  <div class="row content">
+    <div class="col-sm-3 sidenav">
+    </div>
+    <div class="col-sm-6 text-left"> 
+      {% block content %}{% endblock %}
+      <div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));
+</script>
+    </div>
+    <div class="col-sm-3 sidenav">
+      <div class="info">
+        <p>다시 방문하셨나요?</p>
+        <form role="form">
+          <div class="radio">
+            <label><input type="radio" name="revisited" value="yes" checked>예</label>
+          </div>
+          <div class="radio">
+            <label><input type="radio" name="revisited" value="no">아니오</label>
+          </div>
+          <button type="submit" class="btn btn-default">Submit</button>
+        </form>
+        <script>
+        $("form").submit(function(event){
+            event.preventDefault();
+            var revisited = $('input:radio[name=revisited]:checked').val();
+            ga('send', 'event', 'poll', 'revisit', revisited, revisited);
+            $(".info").html("소중한 정보 주셔 감사합니다.");  
+        });  
+        </script>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer class="container-fluid text-center">
+  <p></p>
+</footer>
+
 </body>
 </html>

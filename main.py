@@ -1,10 +1,15 @@
 import logging
 import re
+import json
 
 from flask import Flask
 from flask import render_template, redirect, url_for
-from flask import request
+from flask import request, Response
 from flask import Markup
+from flask import Blueprint
+from flask import jsonify
+
+from jinja2 import Template
 
 import markdown
 
@@ -36,6 +41,7 @@ def post(title=None, category=None):
     
     txt = noTag(noTag(toc, 'div'), 'ul')
     toc = toc if txt.strip() else ''
+
     return render_template('post.html',
                            post=post,
                            category=category,
@@ -43,6 +49,12 @@ def post(title=None, category=None):
                            next_post=next_post,
                            toc=toc,
                            content=content)
+
+@app.route('/pages')
+def pages():
+    posts = [p.get_json() for p in Post.query().order(-Post.date)]
+    # return jsonify(posts)
+    return Response(json.dumps(posts), mimetype='application/json')
 
 @app.route('/')
 @app.route('/page/')
@@ -108,6 +120,57 @@ def network():
 def about():
     return render_template('about.html')
 
-@app.route('/admin')
-def admin():
-    return render_template('admin.html')
+@app.route('/test')
+def test():
+    return render_template('test.html')
+
+
+### Flask extension
+
+class Graph(object):
+    def __init__(self, data,
+                       chart="line",
+                       width=400,
+                       height=350,
+                       x='Word',
+                       y='Awesomeness'):
+        self.data = data
+        self.chart = chart
+        self.width = width
+        self.height = height
+        self.x = x
+        self.y = y
+    
+    def render(self, *args, **kwargs):
+        return render_template(*args, **kwargs)
+    
+    @property
+    def html(self):
+        return Markup(
+            self.render('graph.html', graph=self)
+        )
+
+def graph(*args, **kwargs):
+    graph = Graph(*args, **kwargs)
+    return graph.html
+
+class GraphTemplate(object):
+    def __init__(self, app=None, **kwargs):
+        if app:
+            self.init_app(app)
+
+    def init_app(self, app):
+        self.register_blueprint(app)
+        app.add_template_global(graph)
+        
+    def register_blueprint(self, app):
+        module = Blueprint(
+            "graph",
+            __name__,
+            template_folder="templates"
+        )
+        app.register_blueprint(module)
+        return module
+
+graph_template = GraphTemplate()
+graph_template.init_app(app)

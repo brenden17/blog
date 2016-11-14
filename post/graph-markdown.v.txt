@@ -1,0 +1,10 @@
+book
+그래프 넣기
+d3.js, graph
+### 바 그래프 넣기
+
+{{ 
+graph('[{"Word":"Hello", "Awesomeness":100 },{"Word":"asdfasd", "Awesomeness":300}, { "Word":"1", "Awesomeness":300}, { "Word":"33", "Awesomeness":300}, { "Word":"333", "Awesomeness":300}, { "Word":"asdfasd", "Awesomeness":30}, { "Word":"zxcv", "Awesomeness":300}]',width=650, height=300, x="Word", y="Awesomeness")
+}}
+
+---

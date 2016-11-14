@@ -1,0 +1,28 @@
+<script src="http://d3js.org/d3.v3.min.js"></script>
+<script src="http://dimplejs.org/dist/dimple.v2.1.6.min.js"></script>       
+{#  http://dimplejs.org/ #}
+
+<div id="chartContainer">
+  <script src="http://d3js.org/d3.v3.min.js"></script>
+  <script src="http://dimplejs.org/dist/dimple.v2.1.6.min.js"></script> 
+  <script type="text/javascript">
+    var svg = dimple.newSvg("#chartContainer", {{ graph.width }}, {{ graph.height }});
+
+    var data = {{ graph.data|safe }};
+    
+	var chart = new dimple.chart(svg, data);
+	chart.addCategoryAxis("x", "{{ graph.x }}");
+	chart.addMeasureAxis("y", "{{ graph.y }}");
+	
+
+	{% if graph.chart == "bar" %}
+    chart.addSeries(null, dimple.plot.bar);
+	{% elif graph.chart == "line" %}
+    chart.addSeries(null, dimple.plot.line);
+	{% else %}
+    Default logic goes here
+	{% endif %}
+
+	chart.draw();
+  </script>
+</div>

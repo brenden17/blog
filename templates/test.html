@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% block title %}
+TEST
+{% endblock %}
+
+{% block content %}
+{{ 
+graph('[{"Word":"Hello", "Awesomeness":100 },{"Word":"asdfasd", "Awesomeness":300}, { "Word":"1", "Awesomeness":300}, { "Word":"33", "Awesomeness":300}, { "Word":"333", "Awesomeness":300}, { "Word":"asdfasd", "Awesomeness":30}, { "Word":"zxcv", "Awesomeness":300}]',width=650, height=300, x="Word", y="Awesomeness")
+}}
+
+{% endblock %}
