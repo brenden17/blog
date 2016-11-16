@@ -108,7 +108,11 @@ img {
     padding: 5px 5px !important;
     board: 1px solid #88C7E0;
     border-color: #88C7E0;
-    width: 500px;
+    /*width: 500px;*/
+}
+.toc li {
+	font-size: 14px;
+	font-style: italic;
 }
 .suggest {
     background: none repeat scroll 0 0 #F4F7F8;

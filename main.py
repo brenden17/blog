@@ -38,12 +38,15 @@ def post(title=None, category=None):
     pre_post = post.get_pre(category=category)
     next_post = post.get_next(category=category)
     content, toc = md2html(post.content)
+
+    last_posts = Post.get_lastest(category=category)
     
     txt = noTag(noTag(toc, 'div'), 'ul')
     toc = toc if txt.strip() else ''
 
     return render_template('post.html',
                            post=post,
+                           last_posts=last_posts,
                            category=category,
                            pre_post=pre_post,
                            next_post=next_post,

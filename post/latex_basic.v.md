@@ -3,7 +3,7 @@ MathJax 기본 기호
 latex
 
 ## 설치
-head에 한줄 추가하면 된다.
+head에 한줄 추가한다.
 
     <script type="text/javascript"  src="https://c328740.ssl.cf1.rackcdn.com/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 

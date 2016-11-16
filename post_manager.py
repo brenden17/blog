@@ -41,7 +41,8 @@ def update_post(filename, post_base_dir='./post/'):
         print 'New post saved'
     else:
         post = Post.get_by_id(int(postid))
-        suggest = post.suggest
+        suggest = [title.replace(' ', '-') for title in post.suggest]
+
         print suggest
         post.category = category
         post.title = title

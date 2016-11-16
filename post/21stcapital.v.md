@@ -9,5 +9,4 @@ economics, history
 
 ![alt text](http://book.daum-img.net/R110x160/KOR9788967351274?moddttm=20141008114929 "21세기 자본")
 
-
-
+읽다 중단.

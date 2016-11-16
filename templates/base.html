@@ -4,16 +4,14 @@
   <title>{% block title %} {% endblock %}</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/static/css/bootstrap.min.css">
   <link rel="shortcut icon" href="/static/images/favicon.ico" type="image/x-icon">
-  <link rel="stylesheet" href="/static/css/install.css?ver=20100228" type="text/css" />
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-
+  <link rel="stylesheet" href="/static/css/install.css?ver=20100228" type="text/css"/>
+  <link rel="stylesheet" href="/static/css/default.css">
   <style>
     /* Remove the navbar's default margin-bottom and rounded borders */ 
     .navbar {
-      margin: 30px 100px 30px 20px;
+      margin: 30px 30px 30px 20px;
       border-radius: 0;
       background-color: white;
       border-color: white;
@@ -28,14 +26,12 @@
       background-color: white;
       height: 100%;
     }
-
     /* Set black background color, white text and some padding */
     footer {
       background-color: white;
       color: white;
       padding: 15px;
     }
-    
     /* On small screens, set height to 'auto' for sidenav and grid */
     @media screen and (max-width: 767px) {
       .sidenav {
@@ -44,16 +40,30 @@
       }
       .row.content {height:auto;} 
     }
-
     .info {
       background-color: white;
       padding: 70px 15px 0 15px;
     }
-  {% block javascript %}
-  {% endblock %}
-
+    .lastest {
+      margin-top: 40px;
+      background-color: white;
+      padding: 70px 15px 0 15px;
+    }
+    .lastest ul {
+      list-style: none;
+      font-size: 12px;
+    }
+    .navbar-default {
+      background-color: #fff !important; 
+      border-color: #fff !important; 
+    }
   </style>
+  <script src="/static/js/jquery-1.10.2.min.js"/>
+  <script src="/static/js/bootstrap.min.js"/>
 
+  <script src="/static/js/highlight.pack.js" />
+  <script>hljs.initHighlightingOnLoad();</script>
+ 
 </head>
 <body>
 
@@ -84,7 +94,6 @@
         <li><a href="/archives">Archives</a></li>
         <li><a href="/network">Network</a></li>
         <li><a href="/about">About</a></li>
-        <li>  </li>
       </ul>
     </div>
   </div>
@@ -107,6 +116,14 @@
 </script>
     </div>
     <div class="col-sm-3 sidenav">
+    <div class="lastest">
+      <p>최신 글</p>
+      <ul>
+      {% for p in last_posts %}
+        <li><a href="{{ p.get_addr() }}">{{ p.title }}</a></li>
+      {% endfor %}
+      </ul>
+    </div>
       <div class="info">
         <p>다시 방문하셨나요?</p>
         <form role="form">
@@ -122,7 +139,7 @@
         $("form").submit(function(event){
             event.preventDefault();
             var revisited = $('input:radio[name=revisited]:checked').val();
-            ga('send', 'event', 'poll', 'revisit', revisited, revisited);
+            ga('send', 'event', 'poll', 'revisit', revisited, 0);
             $(".info").html("소중한 정보 주셔 감사합니다.");  
         });  
         </script>
