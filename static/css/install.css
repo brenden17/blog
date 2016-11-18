@@ -104,11 +104,11 @@ img {
 .toc {
     background: none repeat scroll 0 0 #F5F7FA;
     border: 1px solid #DADEE3;
-    margin-left: 0 !important;
+    margin-left: 0px !important;
+    margin-bottom: 20px !important;
     padding: 5px 5px !important;
-    board: 1px solid #88C7E0;
     border-color: #88C7E0;
-    /*width: 500px;*/
+    
 }
 .toc li {
 	font-size: 14px;
@@ -359,4 +359,53 @@ body.rtl,
 
 #search {
 	margin: 10px 170px 20px;
+}
+
+/* Remove the navbar's default margin-bottom and rounded borders */ 
+.navbar {
+  margin: 30px 30px 30px 20px;
+  border-radius: 0;
+  background-color: white;
+  border-color: white;
+}
+
+/* Set height of the grid so .sidenav can be 100% (adjust as needed) */
+/*.row.content {height: 450px}*/
+
+/* Set gray background color and 100% height */
+.sidenav {
+  padding-top: 20px;
+  background-color: white;
+  height: 100%;
+}
+/* Set black background color, white text and some padding */
+footer {
+  background-color: white;
+  color: white;
+  padding: 15px;
+}
+/* On small screens, set height to 'auto' for sidenav and grid */
+@media screen and (max-width: 767px) {
+  .sidenav {
+    height: auto;
+    padding: 0px;
+  }
+  .row.content {height:auto;} 
+}
+.info {
+  background-color: white;
+  padding: 70px 15px 0 15px;
+}
+.lastest {
+  margin-top: 40px;
+  background-color: white;
+  padding: 70px 15px 0 15px;
+}
+.lastest ul {
+  list-style: none;
+  font-size: 12px;
+}
+.navbar-default {
+  background-color: #fff !important; 
+  border-color: #fff !important; 
 }
