@@ -7,11 +7,8 @@
 <link rel="stylesheet" href="/static/css/default.css">
 <script src="/static/js/highlight.pack.js"></script>
 <script>hljs.initHighlightingOnLoad();</script>
-<script type="text/javascript" async src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
-</script>
+<script type="text/javascript" async src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML"></script>
 {% endblock %}
-
-
 
 {% block content %}
     <h1>{{ post.title }}</h1>
@@ -50,6 +47,8 @@
     <ul>
       {% for p in posts %}
       <li><a href="/{{ post.title }}/{{ p.title }}">{{ p.title }}</a></li>
+      {% else %}
+      <li>아직 없습니다.</li>
       {% endfor %} 
     </ul>
 {% endblock %}

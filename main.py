@@ -78,10 +78,12 @@ def entity(noun=None):
     txt = noTag(noTag(toc, 'div'), 'ul')
     toc = toc if txt.strip() else ''
 
+    last_posts = Post.get_lastest()
     return render_template('entity.html',
                            entity=entity,
                            post=post,
                            posts=posts,
+                           last_posts=last_posts,
                            toc=toc,
                            content=content)
 
@@ -93,21 +95,27 @@ def verb(noun=None, verb=None):
 def idonotknow(noun):
     posts = Post.query().filter(Post.category.IN([noun])).order(-Post.date)
     tagged_posts = Post.get_tagged_post(noun)
+    last_posts = Post.get_lastest()
     return render_template('idonotknow.html',
                            noun=noun,
                            posts=posts,
+                           last_posts=last_posts,
                            tagged_posts=tagged_posts)
 
 @app.route('/archives')
 def archives():
     entities = Entity.query().order(Entity.name)
+    last_posts = Post.get_lastest()
     return render_template('archives.html',
+                           last_posts=last_posts,
                            entities=entities)
 
 @app.route('/history')
 def hisotry():
     posts = Post.query().order(-Post.date)
+    last_posts = Post.get_lastest()
     return render_template('archives-history.html',
+                           last_posts=last_posts,
                            posts=posts)
 
 @app.route('/network')
@@ -116,12 +124,15 @@ def network():
     result = list()
     for e in entities:
         result.extend(e.get_json())
+    last_posts = Post.get_lastest()
     return render_template('network.html',
+                           last_posts=last_posts,
                            result=result)
     
 @app.route('/about')
 def about():
-    return render_template('about.html')
+    last_posts = Post.get_lastest()
+    return render_template('about.html',last_posts=last_posts)
 
 @app.route('/test')
 def test():

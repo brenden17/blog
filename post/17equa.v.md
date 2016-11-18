@@ -2,6 +2,7 @@ MathJax, math
 17 Equations that changed the world
 latex, math
 
+아름답다. 몇개의 기호로 세상의 움직임을 나타낼 수 있다니, 인간의 사고는 실로 놀랍다.
 ## Pythagoras's Theorem
 
 $$

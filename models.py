@@ -60,6 +60,8 @@ class Post(ndb.Model, DisplayerMixin):
         return cls.query(Post.tags.IN([tag]))
 
     def get_addr(self, category=None):
+    	if self.tags == [''] and self.category == ['']:
+    		return '/%s' % (self.title,)
         return '/%s/%s' % ('page', self.title)
 
     def get_json(self):

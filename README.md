@@ -1,4 +1,4 @@
-## Blog on Google App Engine
+##### Blog on Google App Engine
 
 ~~~
 https://github.com/brenden17/blog
@@ -33,7 +33,7 @@ See our other [Google Cloud Platform githubrepos](https://github.com/GoogleCloud
 ### Commands
 
 * update.sh : update all files
-* remote_shell.sh : manage post such as creating, updating, delting post.
+* remote_shell.sh : manage post such as creating, updating, delting post
 connnet reomte shell
 
 ~~~
@@ -50,7 +50,14 @@ update_post('picasoinstatistics.v.md')
 * https://cse.google.com/cse/search/promotions?cx=015830939032638273975:ksqu4hauyvk
 
 ### Clustering Post
+epler-page-suggestion can cluster posts. read kepler-page-suggestion/readme.md.
 
-kepler-page-suggestion can cluster posts. read kepler-page-suggestion/readme.md.
+### google console
 
+~~~
+$ cd workspace/blog
+$ source ./bashrc
+$ reshell # manage post such as creating, updating, delting post
+$ updateapp # update all files 
+~~~
 

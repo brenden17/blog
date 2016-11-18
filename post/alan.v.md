@@ -1,6 +1,6 @@
 book
 Alan Turing: The Enigma, 앨런 튜링의 이미테이션 게임
-math
+math, alan turing, turing machine
 
 Alan Turing: The Enigma, 앨런 튜링의 이미테이션 게임
 :   제1판 1쇄 2015년 1월 23일

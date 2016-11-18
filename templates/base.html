@@ -125,8 +125,18 @@
       </ul>
     </div>
       <div class="info">
+        <p>글이 유익했나요?</p>
+        <form class="interest" role="form">
+          <div class="radio">
+            <label><input type="radio" name="interested" value="yes" checked>예</label>
+          </div>
+          <div class="radio">
+            <label><input type="radio" name="interested" value="no">아니오</label>
+          </div>
+          <button type="submit" class="btn btn-default">Submit</button>
+        </form>
         <p>다시 방문하셨나요?</p>
-        <form role="form">
+        <form class="revisit" role="form">
           <div class="radio">
             <label><input type="radio" name="revisited" value="yes" checked>예</label>
           </div>
@@ -136,10 +146,16 @@
           <button type="submit" class="btn btn-default">Submit</button>
         </form>
         <script>
-        $("form").submit(function(event){
+        $("form.revisit").submit(function(event){
             event.preventDefault();
             var revisited = $('input:radio[name=revisited]:checked').val();
             ga('send', 'event', 'poll', 'revisit', revisited, 0);
+            $(".info").html("소중한 정보 주셔 감사합니다.");  
+        });  
+        $("form.interest").submit(function(event){
+            event.preventDefault();
+            var revisited = $('input:radio[name=interested]:checked').val();
+            ga('send', 'event', 'poll', 'interest', revisited, 0);
             $(".info").html("소중한 정보 주셔 감사합니다.");  
         });  
         </script>

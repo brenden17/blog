@@ -24,9 +24,9 @@ def update_post(filename, post_base_dir='./post/'):
     filename = post_base_dir + filename
     with open(filename) as f:
         txt = f.readlines()
-        category = map(strip, txt[0].strip().split(','))
+        category = map(lambda x: x.strip().replace(' ', '-'), txt[0].strip().split(','))
         title = txt[1].strip().replace(' ', '-')
-        tags = map(strip, txt[2].strip().split(','))
+        tags = map(lambda x: x.strip().replace(' ', '-'), txt[2].strip().split(','))
         content = ''.join(txt[3:])
 
     postid = get_postid(filename)
@@ -41,6 +41,10 @@ def update_post(filename, post_base_dir='./post/'):
         print 'New post saved'
     else:
         post = Post.get_by_id(int(postid))
+        
+        if not post:
+        	return
+        	
         suggest = [title.replace(' ', '-') for title in post.suggest]
 
         print suggest
@@ -52,7 +56,7 @@ def update_post(filename, post_base_dir='./post/'):
         post.put()
         print 'Existed post saved'
 
-def update_all_post():
+def update_posts():
     dir_name = './post/*.v.md'
     files = glob(dir_name)
     for f in files:
@@ -166,10 +170,10 @@ class Tree(object):
             all_nodes = set()
             for line in lines[1:]:
                 line = line.strip()
-                sub, obj = line.split('=')[0], line.split('=')[1]
-                f = map(strip, obj.split('|')[0].split(',')) if obj.split('|')[0] else []
-                t = map(strip, obj.split('|')[1].split(',')) if obj.split('|')[1] else []
-                r = map(strip, obj.split('|')[2].split(',')) if obj.split('|')[2] else []
+                sub, obj = line.split('=')[0].strip().replace(' ', '-'), line.split('=')[1]
+                f = map(lambda x: x.strip().replace(' ', '-'), obj.split('|')[0].split(',')) if obj.split('|')[0] else []
+                t = map(lambda x: x.strip().replace(' ', '-'), obj.split('|')[1].split(',')) if obj.split('|')[1] else []
+                r = map(lambda x: x.strip().replace(' ', '-'), obj.split('|')[2].split(',')) if obj.split('|')[2] else []
                 print sub, f, t, r
                 all_nodes |= set([sub]) | set(f) | set(t) | set(r)
                 self.insert(sub, f, t, r)
