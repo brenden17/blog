@@ -4,14 +4,14 @@
 {% endblock %}
 
 {% block content %}
-<h1>올림말로 분류한 모든 페이지</h1>
-<a href="/history">All pages by date</a>&nbsp;&nbsp;&nbsp;
+<h1><span class="glyphicon glyphicon-hdd" aria-hidden="true"></span>올림말로 분류한 모든 페이지</h1>
+<a href="/history"><span class="glyphicon glyphicon-file" aria-hidden="true"></span>All pages by date</a>&nbsp;&nbsp;&nbsp;
 <ol>
 {% for entity in entities %}
     <li><a href="{{ entity.get_addr() }}">{{ entity.name }}</a></li>
     <ol>
     {% for post in entity.get_post() %}
-    <li>{{ post.date.strftime('%Y %b-%d') }} <a href="{{ post.get_addr() }}">{{ post.title }}</a> | tags : {{ post.get_tags()|safe }} </li>
+    <li>{% if not post.is_entity() %}<span class="glyphicon glyphicon-book" aria-hidden="true"></span>{% else %} {% <span class="glyphicon glyphicon-file" aria-hidden="true"></span> %}{{ post.date.strftime('%Y %b-%d') }} <a href="{{ post.get_addr() }}">{{ post.title }}</a> {% if not post.is_entity() %}| tags : {{ post.get_tags()|safe }} {% endif %}</li>
     {% endfor %}
     </ol>
 {% endfor %}
