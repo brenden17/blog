@@ -39,7 +39,7 @@ def post(title=None, category=None):
     next_post = post.get_next(category=category)
     content, toc = md2html(post.content)
 
-    last_posts = Post.get_lastest(category=category)
+    last_posts = Post.get_lastest()
     
     txt = noTag(noTag(toc, 'div'), 'ul')
     toc = toc if txt.strip() else ''

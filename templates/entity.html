@@ -1,6 +1,7 @@
 {% extends "base.html" %}
 
 {% block title %}
+{{ post.title }}
 {% endblock %}
 
 {% block javascript %}
@@ -10,25 +11,30 @@
 <script type="text/javascript" async src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML"></script>
 {% endblock %}
 
-{% block content %}
-    <h1>{{ post.title }}</h1>
+{% block contentInfo %}
+	<h1>{{ post.title }}</h1>
     <p style="text-align: right">
+	<a href="{{ post.get_addr(category, True) }}"><span class="glyphicon glyphicon-music" aria-hidden="true"></span> 다르게 보기</a> &nbsp;&nbsp;
     {{ post.date.strftime('%Y %b-%d') }}
     </p>
+{% endblock %}
+
+{% block content %}
+    
     <div class="nav_info">
-	    <h2>상위 올림말 페이지</h2>
+	    <h2><span class="glyphicon glyphicon-zoom-out" aria-hidden="true"></span> 상위 올림말 페이지</h2>
 	    <ul>
 		    {% for p in entity.from_entity %}
 		    <li><a href="/{{ p }}/">{{ p }}</a></li>
 		    {% endfor %}
 	    </ul>
-	    <h2>하위 올림말 페이지</h2>
+	    <h2><span class="glyphicon glyphicon-zoom-in" a-hidden="true"></span> 하위 올림말 페이지</h2>
 	    <ul>
 		    {% for c in entity.to_entity %}
 		    <li><a href="/{{ c }}/">{{ c }}</a></li>
 		    {% endfor %}
 	    </ul>
-	    <h2>관련 올림말 페이지</h2>
+	    <h2><span class="glyphicon glyphicon-link" aria-hidden="true"></span> 관련 올림말 페이지</h2>
 	    <ul>
 	    {% for r in entity.ref_entity %}
 	        <li><a href="/{{ r }}/">{{ r }}</a></li>
@@ -43,7 +49,7 @@
     {% endif %}
     {{ content }}
 
-    <h2>관련 페이지</h2>
+    <h2><span class="glyphicon glyphicon-lamp" aria-hidden="true"></span> 관련 페이지</h2>
     <ul>
       {% for p in posts %}
       <li><a href="/{{ post.title }}/{{ p.title }}">{{ p.title }}</a></li>
@@ -51,4 +57,5 @@
       <li>아직 없습니다.</li>
       {% endfor %} 
     </ul>
+
 {% endblock %}

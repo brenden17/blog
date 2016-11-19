@@ -59,8 +59,10 @@ class Post(ndb.Model, DisplayerMixin):
     def get_tagged_post(cls, tag):
         return cls.query(Post.tags.IN([tag]))
 
-    def get_addr(self, category=None):
-    	if self.tags == [''] and self.category == ['']:
+    def get_addr(self, category=None, nav=False):
+    	if nav:
+    		return '/%s/%s' % ('page', self.title)
+    	if self.is_entity():
     		return '/%s' % (self.title,)
         return '/%s/%s' % ('page', self.title)
 
@@ -71,6 +73,11 @@ class Post(ndb.Model, DisplayerMixin):
             'date':self.date.strftime('%m/%b/%Y'),
             'tags':','.join(self.tags)
         }
+        
+    def is_entity(self):
+    	if self.tags == [''] and self.category == ['']:
+    		return True
+    	return False
 
 class Entity(ndb.Model):
     name = ndb.StringProperty(required=True)

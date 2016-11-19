@@ -1,17 +1,23 @@
 {% extends "base.html" %}
 
 {% block title %}
+archives
+{% endblock %}
+
+{% block contentInfo %}
+<h1><span class="glyphicon glyphicon-book" aria-hidden="true"></span> 올림말로 분류한 모든 페이지</h1>
+<p style="text-align: right">
+	<a href="/history"><span class="glyphicon glyphicon-time" aria-hidden="true"></span> 시간으로 정렬한 모든 페이지</a>&nbsp;&nbsp;&nbsp;
+</p>
 {% endblock %}
 
 {% block content %}
-<h1><span class="glyphicon glyphicon-hdd" aria-hidden="true"></span>올림말로 분류한 모든 페이지</h1>
-<a href="/history"><span class="glyphicon glyphicon-file" aria-hidden="true"></span>All pages by date</a>&nbsp;&nbsp;&nbsp;
 <ol>
 {% for entity in entities %}
     <li><a href="{{ entity.get_addr() }}">{{ entity.name }}</a></li>
     <ol>
     {% for post in entity.get_post() %}
-    <li>{% if not post.is_entity() %}<span class="glyphicon glyphicon-book" aria-hidden="true"></span>{% else %} {% <span class="glyphicon glyphicon-file" aria-hidden="true"></span> %}{{ post.date.strftime('%Y %b-%d') }} <a href="{{ post.get_addr() }}">{{ post.title }}</a> {% if not post.is_entity() %}| tags : {{ post.get_tags()|safe }} {% endif %}</li>
+    <li>{{ post.date.strftime('%Y %b-%d') }} <a href="{{ post.get_addr() }}">{{ post.title }}</a> {% if not post.is_entity() %}| tags : {{ post.get_tags()|safe }} {% endif %}</li>
     {% endfor %}
     </ol>
 {% endfor %}

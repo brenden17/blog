@@ -4,20 +4,24 @@
 {{ post.title }}
 {% endblock %}
 
-{% block content %}
-
+{% block contentInfo %}
 <h1>{{ post.title }}</h1>
 
 <p style="text-align: right">
 {% if post.get_categorys() %}
-분류 : {{ post.get_categorys()|safe }} &nbsp;&nbsp;
+<span class="glyphicon glyphicon-filter" aria-hidden="true"></span> 분류 : {{ post.get_categorys()|safe }} &nbsp;&nbsp;
 {% endif %}
 {% if post.get_tags() %}
-꼬리표 : {{ post.get_tags()|safe }} &nbsp;&nbsp; 
+<span class="glyphicon glyphicon-tag" aria-hidden="true"></span> 꼬리표 : {{ post.get_tags()|safe }} &nbsp;&nbsp; 
+{% endif %}
+{% if post.is_entity() %}
+<a href="{{ post.get_addr(category) }}"><span class="glyphicon glyphicon-music" aria-hidden="true"></span> 다르게 보기</a> &nbsp;&nbsp; 
 {% endif %}
 {{ post.date.strftime('%Y %b-%d') }}
 </p>
+{% endblock %}
 
+{% block content %}
 {% if toc %}
 {{ toc }}
 {% endif %}
@@ -27,19 +31,19 @@
 
 <p>
 {% if post.get_categorys() %}
-분류 : {{ post.get_categorys()|safe }}<br />
+<span class="glyphicon glyphicon-filter" aria-hidden="true"></span> 분류 : {{ post.get_categorys()|safe }}<br />
 {% endif %}
 {% if next_post %}
-다음 : <a href="{{ next_post.get_addr(category) }}">{{ next_post.title }}</a>&nbsp;&nbsp;
+<span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span> 다음 : <a href="{{ next_post.get_addr(category, True) }}">{{ next_post.title }}</a>&nbsp;&nbsp;
 {% endif %}
 {% if pre_post %}
-이전 : <a href="{{ pre_post.get_addr(category) }}">{{ pre_post.title }}</a>
+<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span> 이전 : <a href="{{ pre_post.get_addr(category, True) }}">{{ pre_post.title }}</a>
 {% endif %}
 </p>
 
 {% if post.suggest %}
 <div id="suggest">
-<h2>유사한 페이지</h2>
+<h2><span class="glyphicon glyphicon-briefcase" aria-hidden="true"></span> 유사한 페이지</h2>
 	<ul>
 	{% for suggest in post.suggest %}
 	<li><a href="/page/{{ suggest | replace(' ','-')}}">{{ suggest | replace(' ','-') }}</a></li>

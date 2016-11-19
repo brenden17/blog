@@ -27,13 +27,13 @@
   ga('send', 'pageview');
 </script>
 
-<nav class="navbar navbar-default">
+<nav class="navbar navbar-default" role="navigation">
   <div class="container-fluid">
     <div class="navbar-header">
-      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#myNavbar">
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
-        <span class="icon-bar"></span>                        
+        <span class="icon-bar"></span>
       </button>
       <a class="navbar-brand" href="#"></a>
     </div>
@@ -53,8 +53,11 @@
   <div class="row content">
     <div class="col-sm-3 sidenav">
     </div>
-    <div class="col-sm-6 text-left"> 
+    <div class="col-sm-6 text-left">
+      {% block contentInfo %}{% endblock %}
+      <div class="content-body">
       {% block content %}{% endblock %}
+      </div>
       <div id="fb-root"></div>
 <script>(function(d, s, id) {
   var js, fjs = d.getElementsByTagName(s)[0];
@@ -66,16 +69,16 @@
 </script>
     </div>
     <div class="col-sm-3 sidenav">
-    <div class="lastest">
-      <p>최신 글</p>
-      <ul>
-      {% for p in last_posts %}
-        <li><a href="{{ p.get_addr() }}">{{ p.title }}</a></li>
-      {% endfor %}
-      </ul>
-    </div>
+      <div class="lastest">
+        <p><span class="glyphicon glyphicon-flag" aria-hidden="true"></span> 최신 글</p>
+        <ul>
+        {% for p in last_posts %}
+          <li><a href="{{ p.get_addr() }}">{{ p.title }}</a></li>
+        {% endfor %}
+        </ul>
+      </div>
       <div class="info">
-        <p>글이 유익했나요?</p>
+        <p><span class="glyphicon glyphicon-headphones" aria-hidden="true"></span> 글이 유익했나요?</p>
         <form class="interest" role="form">
           <div class="radio">
             <label><input type="radio" name="interested" value="yes" checked>예</label>
@@ -85,7 +88,7 @@
           </div>
           <button type="submit" class="btn btn-default">Submit</button>
         </form>
-        <p>다시 방문하셨나요?</p>
+        <p><span class="glyphicon glyphicon-tent" aria-hidden="true"></span> 다시 방문하셨나요?</p>
         <form class="revisit" role="form">
           <div class="radio">
             <label><input type="radio" name="revisited" value="yes" checked>예</label>

@@ -24,8 +24,10 @@ def update_post(filename, post_base_dir='./post/'):
     filename = post_base_dir + filename
     with open(filename) as f:
         txt = f.readlines()
+        
         category = map(lambda x: x.strip().replace(' ', '-'), txt[0].strip().split(','))
         title = txt[1].strip().replace(' ', '-')
+        print title
         tags = map(lambda x: x.strip().replace(' ', '-'), txt[2].strip().split(','))
         content = ''.join(txt[3:])
 
@@ -45,7 +47,7 @@ def update_post(filename, post_base_dir='./post/'):
         if not post:
         	return
         	
-        suggest = [title.replace(' ', '-') for title in post.suggest]
+        suggest = [t.replace(' ', '-') for t in post.suggest]
 
         print suggest
         post.category = category

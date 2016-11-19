@@ -1,17 +1,20 @@
 {% extends "base.html" %}
 
 {% block title %}
+{{ noun }} - 정의하지 않은 올림말 
+{% endblock %}
+
+{% block contentInfo %}
+<h1>{{ noun }}</h1>
 {% endblock %}
 
 {% block content %}
-<h1>{{ noun }}</h1>
-
 <div class="nav_info">
 <h2>정의하지 않은 올림말</h2>
 wikipedia : <a href="http://en.wikipedia.org/wiki/Special:Search?search={{ noun }}" target="_blank">{{ noun }}</a>
 </div>
 
-<h2>같은 분류 페이지</h2>
+<h2><span class="glyphicon glyphicon-filter" aria-hidden="true"></span>같은 분류 페이지</h2>
 
 <ol>
 {% for post in posts %}
@@ -19,7 +22,7 @@ wikipedia : <a href="http://en.wikipedia.org/wiki/Special:Search?search={{ noun 
 {% endfor %}
 </ol>
 
-<h2>같은 꼬리표 페이지</h2>
+<h2><span class="glyphicon glyphicon-tag" aria-hidden="true"></span> 같은 꼬리표 페이지</h2>
 <ol>
 {% for post in tagged_posts %}
   <li>{{ post.date.strftime('%Y %b-%d') }} <a href="{{ post.get_addr() }}">{{ post.title }}</a></li>

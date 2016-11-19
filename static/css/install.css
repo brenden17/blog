@@ -127,7 +127,6 @@ img {
     margin-left: 0 !important;
     padding: 5px 5px !important;
     board: 1px solid FFFF66;
-    width: 500px;
     border-color: #FFCC33;
     border: 1px solid #FFCC33;
 }
@@ -408,4 +407,7 @@ footer {
 .navbar-default {
   background-color: #fff !important; 
   border-color: #fff !important; 
+}
+.content-body {
+ margin-top: 40px;
 }
