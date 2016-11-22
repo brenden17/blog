@@ -1,10 +1,9 @@
 
-series
+taylor series
 
-series 급수
-:   수열(sequence)의 모든 합
+taylor series 테일러 급수
+:   멱급수(power series)의 한 형태로, 정의역의 특정 점의 미분 계수수열(sequence)의 모든 합
 
-수열의 모든 합의 값이 아니라 수열의 항을 나열하고 더한 형태다. 이를테면,
 
 $$
 a_0 + a_1 + a_2 + \dot \dot \dot 
@@ -34,8 +33,3 @@ $$
 $$
 \lim_{x\to N} \sum_{i=0}^\infty a_n
 $$
-
-다양한 급수 형태가 있다.
- 
- * power series
- * taylor series
