@@ -24,7 +24,7 @@ def noTag(text, tag):
     return tagless
   
 def md2html(content):
-    md = markdown.Markdown(extensions=['toc', 'def_list'])
+    md = markdown.Markdown(extensions=['toc', 'def_list','abbr', 'tables', 'smart_strong', 'fenced_code', 'footnotes'])
     html_content = Markup(md.convert(content))
     toc = Markup(md.toc)
     return html_content, toc
@@ -35,6 +35,9 @@ def post(title=None, category=None):
     else:
         post = Post.get_1lastest(category=category)
 
+    if not post:
+        return redirect(url_for("notfound", title=title))
+		
     pre_post = post.get_pre(category=category)
     next_post = post.get_next(category=category)
     content, toc = md2html(post.content)
@@ -72,7 +75,7 @@ def entity(noun=None):
     if not post:
         return redirect(url_for("idonotknow", noun=noun))
     
-    posts = Post.query().filter(Post.category.IN([noun]))
+    posts = Post.query().filter(Post.category.IN([noun])).order(-Post.date)
     content, toc = md2html(post.content)
     
     txt = noTag(noTag(toc, 'div'), 'ul')
@@ -133,6 +136,17 @@ def network():
 def about():
     last_posts = Post.get_lastest()
     return render_template('about.html',last_posts=last_posts)
+
+@app.route('/admin')
+def admin():
+    last_posts = Post.get_lastest()
+    return render_template('admin.html',last_posts=last_posts)
+
+@app.route('/notfound/<title>')
+def notfound(title=None):
+    last_posts = Post.get_lastest()
+    return render_template('notfound.html', suggest=title,
+                                            last_posts=last_posts)
 
 @app.route('/test')
 def test():

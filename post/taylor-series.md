@@ -6,7 +6,7 @@ taylor series 테일러 급수
 
 
 $$
-a_0 + a_1 + a_2 + \dot \dot \dot 
+a_0 + a_1 + a_2 + \cdot\cdot\cdot 
 $$
 
 기호를 쓰면,

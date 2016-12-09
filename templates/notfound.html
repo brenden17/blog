@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block title %}
+404 not found
+{% endblock %}
+
+{% block contentInfo %}{% endblock %}
+
+{% block content %}
+<h1>찾은 페이지가 없습니다.</h1>
+<p><a href="/page/{{ suggest | replace(' ','-')}}">{{ suggest | replace(' ','-') }}</a>이 아닐까요?</p>
+
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+{% endblock %}

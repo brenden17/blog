@@ -1,19 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>{% block title %} {% endblock %}</title>
+  <title>{% block title %}{% endblock %}</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="/static/css/bootstrap.min.css">
   <link rel="shortcut icon" href="/static/images/favicon.ico" type="image/x-icon">
-  <link rel="stylesheet" href="/static/css/install.css?ver=20100228" type="text/css"/>
+  <link rel="stylesheet" href="/static/css/install.css?ver=04" type="text/css">
   <link rel="stylesheet" href="/static/css/default.css">
-  <script src="/static/js/jquery-1.10.2.min.js"/>
-  <script src="/static/js/bootstrap.min.js"/>
+  
+  <script src="/static/js/jquery-1.10.2.min.js"></script>
+  <script src="/static/js/bootstrap.min.js"></script>
 
-  <script src="/static/js/highlight.pack.js" />
+  <script src="/static/js/highlight.pack.js"></script>
   <script>hljs.initHighlightingOnLoad();</script>
- 
+  {% block javascript %}{% endblock %}
 </head>
 <body>
 
@@ -30,7 +31,7 @@
 <nav class="navbar navbar-default" role="navigation">
   <div class="container-fluid">
     <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#myNavbar">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
@@ -102,15 +103,16 @@
         $("form.revisit").submit(function(event){
             event.preventDefault();
             var revisited = $('input:radio[name=revisited]:checked').val();
-            ga('send', 'event', 'poll', 'revisit', revisited, 0);
+            ga('send', 'event', 'poll', 'revisit', revisited, 0, {'dimension1':  'jeon', 'dimension2':  'chul'});
+            
             $(".info").html("소중한 정보 주셔 감사합니다.");  
         });  
         $("form.interest").submit(function(event){
             event.preventDefault();
             var revisited = $('input:radio[name=interested]:checked').val();
-            ga('send', 'event', 'poll', 'interest', revisited, 0);
+            ga('send', 'event', 'poll', 'interest', revisited, 0, {'dimension1':  'jeon', 'dimension3':  'wuk'});
             $(".info").html("소중한 정보 주셔 감사합니다.");  
-        });  
+        });
         </script>
       </div>
     </div>

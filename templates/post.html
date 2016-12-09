@@ -4,6 +4,10 @@
 {{ post.title }}
 {% endblock %}
 
+{% block javascript %}
+<script type="text/javascript" async src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+{% endblock %}
+
 {% block contentInfo %}
 <h1>{{ post.title }}</h1>
 
@@ -55,6 +59,4 @@
 <p>
 <div class="fb-comments" data-href="http://www.freelunchplan.com{{ post.get_addr('page') }}" data-width="710px" data-numposts="5" data-colorscheme="light"></div>
 </p>
-    
-<script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML" ></script>
 {% endblock %}
