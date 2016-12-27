@@ -152,7 +152,6 @@ def notfound(title=None):
 def test():
     return render_template('test.html')
 
-
 ### Flask extension
 
 class Graph(object):
