@@ -15,12 +15,12 @@ html {
 }*/
 
 a {
-	color: #0074a2;
+	color: #616161;
 	text-decoration: none;
 }
 
 a:hover {
-	color: #2ea2cc;
+	color: #424242;
 }
 
 h1 {
@@ -102,13 +102,10 @@ img {
 }
 
 .toc {
-    background: none repeat scroll 0 0 #F5F7FA;
-    border: 1px solid #DADEE3;
+    background: none repeat scroll 0 0 #DCEDC8;
     margin-left: 0px !important;
     margin-bottom: 20px !important;
-    padding: 5px 5px !important;
-    border-color: #88C7E0;
-    
+    padding: 5px 5px !important;    
 }
 .toc li {
 	font-size: 14px;
