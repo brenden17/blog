@@ -1,4 +1,4 @@
-moive
+movie
 곡성
 
 
