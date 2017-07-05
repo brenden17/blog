@@ -1,6 +1,6 @@
-book
+book, google
 How Google Works, 구글은 어떻게 일하는가
-work, google
+work
 
 How Google Works, 구글은 어떻게 일하는가
 :   제1판 1쇄 2014년 10월 17일

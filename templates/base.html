@@ -41,7 +41,7 @@
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav navbar-right">
         <li><a href="/">Page</a></li>
-        <li><a href="/blog">Blog</a></li>
+        <li><a href="/entity/blog">Blog</a></li>
         <li><a href="/archives">Archives</a></li>
         <li><a href="/network">Network</a></li>
         <li><a href="/about">About</a></li>
@@ -75,7 +75,7 @@
         <p><span class="glyphicon glyphicon-flag" aria-hidden="true"></span> 최신 글</p>
         <ul>
         {% for p in last_posts %}
-          <li><a href="{{ p.get_addr() }}">{{ p.title }}</a></li>
+          <li><a href="/entity{{ p.get_addr() }}">{{ p.title }}</a></li>
         {% endfor %}
         </ul>
       </div>

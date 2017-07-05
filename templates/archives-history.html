@@ -14,7 +14,7 @@ archives
 {% block content %}
 <ol>
 {% for post in posts %}
-    <li> {% if post.is_entity() %} {%endif%}{{ post.date.strftime('%Y %b-%d') }} <a href="{{ post.get_addr() }}">{{ post.title }}</a> {% if not post.is_entity() %}| tags : {{ post.get_tags()|safe }} {% endif %}</li>
+    <li> {% if post.is_entity() %} {%endif%}{{ post.date.strftime('%Y %b-%d') }} <a href="/entity{{ post.get_addr() }}">{{ post.title }}</a> {% if not post.is_entity() %}| tags : {{ post.get_tags()|safe }} {% endif %}</li>
 {% endfor %}
 </ol>
 

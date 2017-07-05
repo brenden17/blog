@@ -19,7 +19,7 @@
 <span class="glyphicon glyphicon-tag" aria-hidden="true"></span> 꼬리표 : {{ post.get_tags()|safe }} &nbsp;&nbsp; 
 {% endif %}
 {% if post.is_entity() %}
-<a href="{{ post.get_addr(category) }}"><span class="glyphicon glyphicon-music" aria-hidden="true"></span> 다르게 보기</a> &nbsp;&nbsp; 
+<a href="/entity{{ post.get_addr(category) }}"><span class="glyphicon glyphicon-music" aria-hidden="true"></span> 다르게 보기</a> &nbsp;&nbsp; 
 {% endif %}
 {{ post.date.strftime('%Y %b-%d') }}
 </p>

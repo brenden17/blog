@@ -7,11 +7,11 @@ def strip(l):
 
 class DisplayerMixin(object):
     def get_tags(self):
-        return ', '.join(['<a href="/%s">%s</a>' %
+        return ', '.join(['<a href="/entity/%s">%s</a>' %
                           (t, t) for t in strip(self.tags)])
 
     def get_categorys(self):
-        return', '.join(['<a href="/%s">%s</a>' %
+        return', '.join(['<a href="/entity/%s">%s</a>' %
                          (c, c) for c in strip(self.category)])
 
 class Post(ndb.Model, DisplayerMixin):
@@ -86,7 +86,7 @@ class Entity(ndb.Model):
     ref_entity = ndb.StringProperty(repeated=True)
 
     def get_addr(self, category=None):
-        return '/%s' % (self.name)
+        return '/entity/%s' % (self.name)
 
     def get_post(self):
         return Post.query().filter(ndb.OR(Post.category.IN([self.name]),

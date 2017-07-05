@@ -22,19 +22,19 @@
 	    <h2><span class="glyphicon glyphicon-zoom-out" aria-hidden="true"></span> 상위 올림말 페이지</h2>
 	    <ul>
 		    {% for p in entity.from_entity %}
-		    <li><a href="/{{ p }}/">{{ p }}</a></li>
+		    <li><a href="/entity/{{ p }}/">{{ p }}</a></li>
 		    {% endfor %}
 	    </ul>
 	    <h2><span class="glyphicon glyphicon-zoom-in" a-hidden="true"></span> 하위 올림말 페이지</h2>
 	    <ul>
 		    {% for c in entity.to_entity %}
-		    <li><a href="/{{ c }}/">{{ c }}</a></li>
+		    <li><a href="/entity/{{ c }}/">{{ c }}</a></li>
 		    {% endfor %}
 	    </ul>
 	    <h2><span class="glyphicon glyphicon-link" aria-hidden="true"></span> 관련 올림말 페이지</h2>
 	    <ul>
 	    {% for r in entity.ref_entity %}
-	        <li><a href="/{{ r }}/">{{ r }}</a></li>
+	        <li><a href="/entity/{{ r }}/">{{ r }}</a></li>
 	    {% endfor %}
 	    </ul>
 	    wikipedia : <a href="http://en.wikipedia.org/wiki/Special:Search?search={{ post.title }}" target="_blank">{{ post.title }}</a>
@@ -46,13 +46,23 @@
     {% endif %}
     {{ content }}
 
-    <h2><span class="glyphicon glyphicon-lamp" aria-hidden="true"></span> 관련 페이지</h2>
-    <ul>
-      {% for p in posts %}
-      <li><a href="/{{ post.title }}/{{ p.title }}">{{ p.title }}</a></li>
+    <h2><span class="glyphicon glyphicon-filter" aria-hidden="true"></span>같은 분류 페이지</h2>
+    <ol>
+    {% for post in posts %}
+      <li>{{ post.date.strftime('%Y %b-%d') }} <a href="{{ post.get_addr() }}">{{ post.title }}</a></li>
+    {% else %}
+      <li>아직 없습니다.</li>
+    {% endfor %}
+    
+    </ol>
+    
+    <h2><span class="glyphicon glyphicon-tag" aria-hidden="true"></span> 같은 꼬리표 페이지</h2>
+    <ol>
+    {% for post in tagged_posts %}
+      <li>{{ post.date.strftime('%Y %b-%d') }} <a href="{{ post.get_addr() }}">{{ post.title }}</a></li>
       {% else %}
       <li>아직 없습니다.</li>
-      {% endfor %} 
-    </ul>
-
+    {% endfor %}
+    </ol>
+    
 {% endblock %}

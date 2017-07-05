@@ -14,6 +14,7 @@ from jinja2 import Template
 import markdown
 
 from models import Post, Entity
+from upload import main
 
 app = Flask(__name__.split('.')[0])
 
@@ -68,7 +69,7 @@ def pages():
 def index(title=None):
     return post(title)
 
-@app.route('/<noun>/')
+@app.route('/entity/<noun>/')
 def entity(noun=None):
     entity = Entity.query(Entity.name==noun).get()
     post = Post.query(Post.title==noun).get()
@@ -76,6 +77,7 @@ def entity(noun=None):
         return redirect(url_for("idonotknow", noun=noun))
     
     posts = Post.query().filter(Post.category.IN([noun])).order(-Post.date)
+    tagged_posts = Post.get_tagged_post(noun)
     content, toc = md2html(post.content)
     
     txt = noTag(noTag(toc, 'div'), 'ul')
@@ -86,11 +88,12 @@ def entity(noun=None):
                            entity=entity,
                            post=post,
                            posts=posts,
+                           tagged_posts=tagged_posts,
                            last_posts=last_posts,
                            toc=toc,
                            content=content)
 
-@app.route('/<noun>/<verb>')
+@app.route('/entity/<noun>/<verb>')
 def verb(noun=None, verb=None):
     return post(verb, category=noun)
 
@@ -150,6 +153,7 @@ def notfound(title=None):
 
 @app.route('/test')
 def test():
+    main()
     return render_template('test.html')
 
 ### Flask extension

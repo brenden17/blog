@@ -17,7 +17,7 @@ archives
     <li><a href="{{ entity.get_addr() }}">{{ entity.name }}</a></li>
     <ol>
     {% for post in entity.get_post() %}
-    <li>{{ post.date.strftime('%Y %b-%d') }} <a href="{{ post.get_addr() }}">{{ post.title }}</a> {% if not post.is_entity() %}| tags : {{ post.get_tags()|safe }} {% endif %}</li>
+    <li>{{ post.date.strftime('%Y %b-%d') }} <a href="/entity{{ post.get_addr() }}">{{ post.title }}</a> {% if not post.is_entity() %}| tags : {{ post.get_tags()|safe }} {% endif %}</li>
     {% endfor %}
     </ol>
 {% endfor %}
