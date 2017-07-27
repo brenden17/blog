@@ -1,11 +1,23 @@
 book
 인포메이션, Information
-ai, machine learning, entropy, shannon, information, computer
+ai, machine learning, entropy, shannon, information, computer, machine, history
 
 인포메이션, Information
 :   1판 3쇄 2017년 2월 6일
 
 ![alt text](http://t1.daumcdn.net/thumb/R110x160/?fname=http%3A%2F%2Ft1.daumcdn.net%2Fbook%2FKOR9788962621693%3Fmoddttm=20170701060527 "amazon book")
+
+---
+
+정보에 관한 방대한 정보. 역사적 사실과 과학 지식이 연결되어 있어 읽기는 그리 녹록치 않다.
+
+요약본이 있어 먼저 요약본을 읽은 후 보면 좋을 듯. 과학적 지식과 수학 지식은 전공자들도 어려워 하는 부분이기 때문에 별도의 설명이 필요하다.
+
+특히, 양자 역학과 정보에 관계는 아직 잘 모르겠다.
+
+두고 두고 있을 만한 책. 책장에 꼭 있어야 할 책.
+
+---
 
 # 프롤로그
 
