@@ -63,7 +63,7 @@ class Post(ndb.Model, DisplayerMixin):
     	if nav:
     		return '/%s/%s' % ('page', self.title)
     	if self.is_entity():
-    		return '/%s' % (self.title,)
+    		return '/%s/%s' % ('entity', self.title,)
         return '/%s/%s' % ('page', self.title)
 
     def get_json(self):

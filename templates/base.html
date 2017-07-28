@@ -75,7 +75,7 @@
         <p><span class="glyphicon glyphicon-flag" aria-hidden="true"></span> 최신 글</p>
         <ul>
         {% for p in last_posts %}
-          <li><a href="/entity{{ p.get_addr() }}">{{ p.title }}</a></li>
+          <li><a href="{{ p.get_addr() }}">{{ p.title }}</a></li>
         {% endfor %}
         </ul>
       </div>
