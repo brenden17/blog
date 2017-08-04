@@ -9,8 +9,4 @@ R을 활용한 기계 학습, Machine learning with R
 
 ![alt text](http://book.daum-img.net/R110x160/BOK00023745392YE?moddttm=20141008114929 "R을 활용한 기계 학습")
 
-
-
-
-
-
+아쉬움이 많이 남는 책.

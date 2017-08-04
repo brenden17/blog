@@ -1,22 +1,13 @@
 book
 어쩌다 보니 통계학자
-statistic, math, person, biography
+statistic, math, person, biography,조지-박스
 
 어쩌다 보니 통계학자, An Accidental Statistician
 :   제1판 1쇄 2015년 10월 30일
 :   조지 박스
 :   자유아카데미
 
-![alt text](http://book.daum-img.net/R110x160/BOK00023745392YE?moddttm=20141008114929 "R을 활용한 기계 학습")
 
----
+20세기가 물리학의 시대라면, 21세기는 확률의 시대라는 말에 동감한다.
 
-
-
-
-
-
-
-
-
-
+조지 박스는 옆집 아저씨처럼 지난 일을 술회한다. 심오한 확률의 법칙이나 인생의 잊지 못할 만한 일들을 기대했지만 약간은 실망.

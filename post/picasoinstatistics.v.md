@@ -1,6 +1,6 @@
 statistics, book
 통계학의 피카소는 누구일까
-history, time series, bootstrap
+history, time series, bootstrap,David-Salsbug
 
 통계학의 피카소는 누구일까
 :   제1판 2쇄 2012년 8월 31일

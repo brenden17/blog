@@ -1,7 +1,7 @@
 
 series
 
-series 급수
+series, 급수
 :   수열(sequence)의 모든 합
 
 수열의 모든 합의 값이 아니라 수열의 항을 나열하고 더한 형태. 이를테면,
